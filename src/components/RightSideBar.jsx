@@ -12,7 +12,7 @@ import {
 } from "react-bootstrap";
 import pic from "../leoAssets/ciao.jpg";
 import "../styleLeo.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import React from "react";
 
@@ -69,84 +69,73 @@ class RightSideBar extends Component {
     return (
       <>
         <Container>
-        <Col>
-            <Button  className='borderR' variant='outline-secondary'>
-            Connect
-          </Button>
-          <Button  className='borderR'  variant='primary'>
-            Connect
-          </Button>
-          <p>Modifica il profilo pubblico e l’URL</p>
+          <Col>
+            <Button className="borderR" variant="outline-secondary">
+              Connect
+            </Button>
+            <Button className="borderR" variant="primary">
+              Connect
+            </Button>
+            <p>Modifica il profilo pubblico e l’URL</p>
           </Col>
-         
+
           <Col
             xs={1}
-            md={12}
-            lg={12}
+            md={4}
+            lg={4}
             style={{ backgroundColor: "white" }}
-            className='borderR'>
+            className="borderR"
+          >
             <Card style={{ width: "18rem" }}>
-              <Card.Img variant='top' src={pic} />
+              <Card.Img variant="top" src={pic} />
             </Card>
           </Col>
-          <Col xs={3} md={3} lg={3} className='borderR'>
+          <Col xs={3} md={3} lg={3} className="borderR">
             <h6>Other people</h6>
 
-            {
-            this.state.reservations.slice(0, 8).map((user) => (
-                <div className=' sizer' key={user._id}>
-                  <div className='testing'>
-                    <Figure.Image
-                      
-                      alt='171x180'
-                      src={user.image}
-                    />
-                  </div>
-                  <div className='justify-content-start  '>
-                    {" "}
-                    <Figure.Caption className='right borderR '>
-                      <p className="boldness">{user.name} 3°+</p>
-                      <p>{user.title}</p>
-                      <Button className='borderR'  variant='outline-secondary'>
-                        Connect
-                      </Button>{" "}
-                    </Figure.Caption>
-                  </div>
+            {this.state.reservations.slice(0, 8).map((user) => (
+              <div className=" sizer" key={user._id}>
+                <div className="testing">
+                  <Figure.Image alt="171x180" src={user.image} />
                 </div>
-              
-            ))
-            
-            }
-          </Col>
-          <Col xs={3} md={3} lg={3} className='borderR'>
-            <h6>People you may know</h6>
-            {
-            this.state.reservations.slice(0, 8).map((user) => (
-              <div className=' sizer' key={user._id}>
-                <div className='testing'>
-                  <Figure.Image
-                    width={17}
-                    height={18}
-                    alt='171x180'
-                    src={user.image}
-                  />
-                </div>
-                <div className='justify-content-start  '>
+                <div className="justify-content-start  ">
                   {" "}
-                  <Figure.Caption className='right borderR '>
+                  <Figure.Caption className="right borderR ">
                     <p className="boldness">{user.name} 3°+</p>
                     <p>{user.title}</p>
-                    <Button className='borderR' variant='outline-secondary'>
+                    <Button className="borderR" variant="outline-secondary">
                       Connect
                     </Button>{" "}
                   </Figure.Caption>
                 </div>
               </div>
-            ))
-            
-            }
+            ))}
           </Col>
-        
+          <Col xs={3} md={3} lg={3} className="borderR">
+            <h6>People you may know</h6>
+            {this.state.reservations.slice(0, 8).map((user) => (
+              <div className=" sizer" key={user._id}>
+                <div className="testing">
+                  <Figure.Image
+                    width={17}
+                    height={18}
+                    alt="171x180"
+                    src={user.image}
+                  />
+                </div>
+                <div className="justify-content-start  ">
+                  {" "}
+                  <Figure.Caption className="right borderR ">
+                    <p className="boldness">{user.name} 3°+</p>
+                    <p>{user.title}</p>
+                    <Button className="borderR" variant="outline-secondary">
+                      Connect
+                    </Button>{" "}
+                  </Figure.Caption>
+                </div>
+              </div>
+            ))}
+          </Col>
         </Container>
       </>
     );

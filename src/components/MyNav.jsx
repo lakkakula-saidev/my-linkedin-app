@@ -26,7 +26,7 @@ class MyNav extends Component {
     return (
       <>
         <Navbar
-          style={{ position: "fixed", top: 0, height: "4em" }}
+          style={{ position: "fixed", top: 0, height: "4em", zIndex: 100 }}
           className=" w-100 p-0 "
           bg="light"
           expand="lg"
