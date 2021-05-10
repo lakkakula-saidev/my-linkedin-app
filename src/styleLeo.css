@@ -1,0 +1,16 @@
+.borderR {
+
+    border-radius: 50px;
+}
+
+.right{
+    display: inline !important;
+    float:right !important;
+
+
+}
+
+h6 {
+    display: inline;
+    display: inline-block;
+}
