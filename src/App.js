@@ -1,5 +1,7 @@
 // import logo from "./logo.svg";
 import "./App.css";
+import MyNav from "./components/MyNav";
+
 import Dashboard from "./components/Dashboard"
 import Activity from "./components/Activity"
 import ExpEdu from "./components/ExpEdu"
@@ -11,6 +13,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   return (
     <div>
+      <MyNav />
       <Container className="mainContainer">
         <Row className="row">
           <ProfilePage />
