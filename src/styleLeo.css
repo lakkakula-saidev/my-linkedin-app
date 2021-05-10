@@ -1,6 +1,6 @@
 .borderR {
 
-    border-radius: 50px;
+    border-radius: 50px !important;
 }
 
 .right{
@@ -13,4 +13,75 @@
 h6 {
     display: inline;
     display: inline-block;
+}
+
+.section {
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: row;
+    font-family: sans-serif;
+  }
+  
+  .paragraph {
+    color: #555;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .content {
+    padding: 20px;
+  }
+  
+  .title {
+    font-size: 24px;
+    color: #222;
+    line-height: 24px;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .sizer {
+     display:flex;
+     flex-direction: row;
+     justify-content: start;
+     margin-bottom: 10px;
+
+  }
+
+ 
+
+ .testing{
+     flex: 0 0 30%
+     
+ }
+ .figure-caption {
+    font-size: .875em;
+    color: #6c757d;
+    margin-left: 10px;
+}
+
+.figure-img {
+    margin-bottom: .5rem;
+    line-height: 1;
+    border-radius: 60px;
+}
+
+.boldness {
+    font-weight: bold;
+
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 0rem !important;
+}
+
+button {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+
+    
 }

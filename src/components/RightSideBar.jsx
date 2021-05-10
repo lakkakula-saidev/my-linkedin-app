@@ -1,9 +1,18 @@
 /** @format */
 
 import { Component } from "react";
-import { Col, Row, Container, Card, Button, Table, Figure } from "react-bootstrap";
+import {
+  Col,
+  Row,
+  Container,
+  Card,
+  Button,
+  Table,
+  Figure,
+} from "react-bootstrap";
 import pic from "../leoAssets/ciao.jpg";
-import "../styleLeo.css"
+import "../styleLeo.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import React from "react";
 
@@ -48,7 +57,7 @@ class RightSideBar extends Component {
   };
 
   render() {
-    let array = this.state.reservations.splice()
+    let array = this.state.reservations.splice();
     // render is not suitable for putting a fetch
     // render is fired multiple times during the lifecycle of a component
     // render will be invoked again every time there's a change in the STATE or in the PROPS
@@ -58,79 +67,78 @@ class RightSideBar extends Component {
     // this.setState({ reservations: ['stefano'] })
 
     return (
-       
       <>
         <Container>
-          {/* <Row xs={1} md={1} lg={1} style={{ backgroundColor: "" }}> */}
-            < Col xs={1} md={12} lg={12} style={{ backgroundColor: "white" }} className = "borderR">
-              <Card style={{ width: "18rem" }}>
-                <Card.Img variant='top' src={pic} />
-              </Card>
-            </Col>
-            <Col xs={1} md={1} lg={1} className = "borderR">
-              <h6>Other people</h6>
+         
+          <Col
+            xs={1}
+            md={12}
+            lg={12}
+            style={{ backgroundColor: "white" }}
+            className='borderR'>
+            <Card style={{ width: "18rem" }}>
+              <Card.Img variant='top' src={pic} />
+            </Card>
+          </Col>
+          <Col xs={3} md={3} lg={3} className='borderR'>
+            <h6>Other people</h6>
 
-              {
-                  
-                 
-             this.state.reservations.slice(0, 8).map(user => (
-                <Figure key={user._id}>
-                <Figure.Image
-                  width={171}
-                  height={180}
-                  alt='171x180'
-                  src={user.image}
-                  className = "borderR"
-                  
-                />
-                <Figure.Caption>
-             <p>{user.name} 3°+</p>
-             <p>{user.title}</p>
-                </Figure.Caption>
-                <Button className = "borderR" variant="outline-secondary">Connect</Button>{' '}
-              </Figure>
-
-             ))
-                 
-               
-              
-             }
-             
-            </Col>
-            <Col xs={1} md={1} lg={1} className = "borderR">
-            <h6 >People you may know</h6>
             {
-             
-                  
-                 
-                  this.state.reservations.slice(0, 8).map(user => (
-                     <Figure key={user._id}>
-                     <Figure.Image
-                       width={171}
-                       height={180}
-                       alt='171x180'
-                       src={user.image}
-                       className = "borderR"
-                       
-                     />
-                     <Figure.Caption className = "right">
-                  <p>{user.name} 3°+</p>
-                  <p>{user.title}</p>
-                     </Figure.Caption>
-                     <Button className = "borderR" variant="outline-secondary">Connect</Button>{' '}
-                    
-                   </Figure>
-                   
-                    
-
-     
-                  ))
-                      
-                    
-                   
-                  }
-            </Col>
-          {/* </Row> */}
+            this.state.reservations.slice(0, 8).map((user) => (
+                <div className=' sizer' key={user._id}>
+                  <div className='testing'>
+                    <Figure.Image
+                      width={10}
+                      height={18}
+                      alt='171x180'
+                      src={user.image}
+                    />
+                  </div>
+                  <div className='justify-content-start  '>
+                    {" "}
+                    <Figure.Caption className='right borderR '>
+                      <p className="boldness">{user.name} 3°+</p>
+                      <p>{user.title}</p>
+                      <Button className='borderR'  variant='outline-secondary'>
+                        Connect
+                      </Button>{" "}
+                    </Figure.Caption>
+                  </div>
+                </div>
+              
+            ))
+            
+            }
+          </Col>
+          <Col xs={2} md={2} lg={2} className='borderR'>
+            <h6>People you may know</h6>
+            {
+            this.state.reservations.slice(0, 8).map((user) => (
+              <div className=' sizer' key={user._id}>
+                <div className='testing'>
+                  <Figure.Image
+                    width={17}
+                    height={18}
+                    alt='171x180'
+                    src={user.image}
+                  />
+                </div>
+                <div className='justify-content-start  '>
+                  {" "}
+                  <Figure.Caption className='right borderR '>
+                    <p className="boldness">{user.name} 3°+</p>
+                    <p>{user.title}</p>
+                    <Button className='borderR' variant='outline-secondary'>
+                      Connect
+                    </Button>{" "}
+                  </Figure.Caption>
+                </div>
+              </div>
+            ))
+            
+            }
+          </Col>
+        
         </Container>
       </>
     );
