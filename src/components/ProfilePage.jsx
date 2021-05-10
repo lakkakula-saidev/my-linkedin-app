@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Jumbotron, Container, Col, Image, Row } from "react-bootstrap";
 import { DropdownButton, Dropdown, Spinner } from "react-bootstrap";
-import { Open_to, Add_profile, More } from "./ProfileDropdown";
 import { Route } from "react-router-dom";
 import About from "../About";
 import Featured from "./Featured";
@@ -120,6 +119,7 @@ export default class MainBody1 extends Component {
         )}
         <About />
         <Featured />
+        <
       </Col>
     );
   }
