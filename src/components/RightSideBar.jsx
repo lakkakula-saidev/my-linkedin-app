@@ -69,6 +69,15 @@ class RightSideBar extends Component {
     return (
       <>
         <Container>
+        <Col>
+            <Button  className='borderR' variant='outline-secondary'>
+            Connect
+          </Button>
+          <Button  className='borderR'  variant='primary'>
+            Connect
+          </Button>
+          <p>Modifica il profilo pubblico e l’URL</p>
+          </Col>
          
           <Col
             xs={1}
