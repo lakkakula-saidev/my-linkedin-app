@@ -18,6 +18,7 @@ import {
   Nav,
   NavDropdown,
   FormControl,
+  InputGroup,
 } from "react-bootstrap";
 
 class MyNav extends Component {
@@ -25,42 +26,55 @@ class MyNav extends Component {
     return (
       <>
         <Navbar
-          style={{ position: "fixed", top: 0 }}
-          className=" w-100"
+          style={{ position: "fixed", top: 0, height: "4em" }}
+          className=" w-100 p-0 "
           bg="light"
           expand="lg"
         >
           {/* <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand> */}
           <div className="px-5"></div>
-          <LinkedInIcon style={{ color: "rgb(10,102,194)", fontSize: 40 }} />
-          <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          </Form>
+          <LinkedInIcon style={{ color: "rgb(10,102,194)", fontSize: 50 }} />
 
+          <InputGroup>
+            <InputGroup.Prepend>
+              <InputGroup.Text id="basic-addon3">
+                {<SearchIcon style={{ backgroundColor: "rgb(238,243,248)" }} />}
+              </InputGroup.Text>
+            </InputGroup.Prepend>
+            <FormControl
+              id="basic-url"
+              placeholder="Search"
+              style={{ backgroundColor: "rgb(238,243,248)" }}
+              type="text"
+              aria-describedby="basic-addon3"
+            />
+          </InputGroup>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav>
-              <Nav.Link className="mx-3" href="#home">
+            <Nav className="align-items: center ">
+              <Nav.Link className="mx-3 my-auto" href="#home">
                 {<HomeRoundedIcon style={{ fontSize: 33 }} />}
-                <p className="m-0 text-center">Home</p>
+                <p className="m-0 p-0 ">Home</p>
               </Nav.Link>
-              <Nav.Link className="mx-3" href="#link">
+              <Nav.Link className="mx-3 my-auto" href="#MyNet">
                 {<PeopleAltRoundedIcon style={{ fontSize: 33 }} />}
-                <p className="m-0 text-center">My Network</p>
+                <p className="m-0">My Network</p>
               </Nav.Link>
-              <Nav.Link className="mx-3" href="#link">
+              <Nav.Link className="mx-3 my-auto" href="#Jobs">
                 {<WorkRoundedIcon style={{ fontSize: 33 }} />}
                 <p className="m-0 text-center">Jobs</p>
               </Nav.Link>
-              <Nav.Link className="mx-3" href="#link">
+              <Nav.Link className="mx-3 my-auto" href="#Messaging">
                 {<SmsRoundedIcon style={{ fontSize: 33 }} />}
                 <p className="m-0 text-center">Messaging</p>
               </Nav.Link>
-              <Nav.Link className="mx-3" href="#link">
+              <Nav.Link className="mx-3 my-auto" href="#Noti">
                 {<NotificationsRoundedIcon style={{ fontSize: 33 }} />}
                 <p className="m-0 ">Notifications</p>
               </Nav.Link>
+
               <NavDropdown
+                className="my-auto"
                 title={
                   <>
                     <div>
@@ -83,8 +97,11 @@ class MyNav extends Component {
                   Separated link
                 </NavDropdown.Item>
               </NavDropdown>
-              <div className="br"> </div>
+              <div className="br" style={{ height: "4.7rem" }}>
+                {" "}
+              </div>
               <NavDropdown
+                className="my-auto"
                 title={
                   <>
                     <div>
@@ -107,8 +124,10 @@ class MyNav extends Component {
                   Separated link
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link className="mx-3" href="#home">
-                Try Premium Free for 1 Month
+              <Nav.Link className="mx-3 my-auto" href="#home">
+                <p className="m-0 p-0" style={{ fontSize: "0.6rem" }}>
+                  Try Premium Free for 1 Month
+                </p>
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
