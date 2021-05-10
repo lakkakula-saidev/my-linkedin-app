@@ -3,15 +3,19 @@ import "./App.css";
 import Dashboard from "./components/Dashboard"
 import Activity from "./components/Activity"
 import ExpEdu from "./components/ExpEdu"
+import ProfilePage from "./components/ProfilePage";
+import { Container, Row, Col } from "react-bootstrap";
+import "./styles/mainBody1.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
     <div>
-      {/* <NavBar />
-      <Container></Container> */}
-      <Dashboard/>
-      <Activity />
-      <ExpEdu />
+      <Container className="mainContainer">
+        <Row className="row">
+          <ProfilePage />
+        </Row>
+      </Container>
     </div>
   );
 }
