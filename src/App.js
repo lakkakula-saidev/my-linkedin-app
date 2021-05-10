@@ -1,5 +1,6 @@
 // import logo from "./logo.svg";
 import "./App.css";
+import RightSideBar from "./components/RightSideBar"
 import MyNav from "./components/MyNav";
 
 import Dashboard from "./components/Dashboard"
@@ -16,6 +17,7 @@ function App() {
       <MyNav />
       <Container className="mainContainer">
         <Row className="row">
+     <RightSideBar/>
           <ProfilePage />
         </Row>
       </Container>
