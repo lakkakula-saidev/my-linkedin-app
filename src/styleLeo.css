@@ -67,6 +67,8 @@ h6 {
     margin-bottom: .5rem;
     line-height: 1;
     border-radius: 60px;
+    height: 50px;
+    width: 50px;
 }
 
 .boldness {

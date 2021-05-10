@@ -88,8 +88,7 @@ class RightSideBar extends Component {
                 <div className=' sizer' key={user._id}>
                   <div className='testing'>
                     <Figure.Image
-                      width={10}
-                      height={18}
+                      
                       alt='171x180'
                       src={user.image}
                     />
@@ -110,7 +109,7 @@ class RightSideBar extends Component {
             
             }
           </Col>
-          <Col xs={2} md={2} lg={2} className='borderR'>
+          <Col xs={3} md={3} lg={3} className='borderR'>
             <h6>People you may know</h6>
             {
             this.state.reservations.slice(0, 8).map((user) => (
