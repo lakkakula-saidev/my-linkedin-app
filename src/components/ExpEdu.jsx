@@ -16,7 +16,7 @@ class ExperienceEducation extends React.Component {
                     </div>
                     <div className="d-flex mb-3 justify-content-between">
                         <div className="d-flex justify-content-between">
-                            <img src="https://media-exp1.licdn.com/dms/image/C4D0BAQHMzEZdUDzWLw/company-logo_100_100/0/1607610827235?e=1628726400&v=beta&t=2DyogaeKHlEJ4FJcFv2DpjEkXpRJ325JlCvt6KMJI_E"></img>
+                            <img src="https://www.vouchercodes.co.uk/static/v10/images/merchant/logo/128px/825_180920143441.png"></img>
                             <div className="ml-3">
                                 <h6>Advertising Specilist</h6>
                                 <p>Boohoo Man</p>
@@ -41,11 +41,11 @@ class ExperienceEducation extends React.Component {
                     </div>
                     <div className="d-flex justify-content-between">
                         <div className="d-flex">
-                            <img src="https://media-exp1.licdn.com/dms/image/C4E0BAQF5t62bcL0e9g/company-logo_100_100/0/1519855919126?e=1628726400&v=beta&t=MJ7aXvNHbhY_WijBVVZztYsa9YUDftiM3CU5ObSMYtk"></img>
+                            <img src="https://static.yocket.in/images/universities/logos/the-university-of-manchester.jpg"></img>
                             <div>
-                                <h6>Harvard University</h6>
-                                <p>CS50: Introduction to Computer Science, Computer Science</p>
-                                <span>2021 - 2021 </span>
+                                <h6>Manchester University</h6>
+                                <p>BSc Management</p>
+                                <span>2018 - 2021 </span>
 
                             </div>
                         </div>
