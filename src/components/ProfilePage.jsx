@@ -7,7 +7,7 @@ import Featured from "./Featured";
 import Dashboard from "./Dashboard";
 import ExpEdu from "./ExpEdu";
 import Activity from "./Activity";
-import Footer from "./Footer"
+import Footer from "./Footer";
 
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 
@@ -165,15 +165,6 @@ export default class MainBody1 extends Component {
             <ExpEdu user_id={this.state.profileData._id} />
           </>
         )}
-<<<<<<< HEAD
-=======
-        <About />
-        <Featured />
-        <Activity />
-        <Dashboard />
-        <ExpEdu />
-#       <Footer />
->>>>>>> main
       </div>
     );
   }
