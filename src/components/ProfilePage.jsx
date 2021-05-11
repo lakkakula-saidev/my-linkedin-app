@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import { Jumbotron, Container, Col, Image, Row } from "react-bootstrap";
 import { DropdownButton, Dropdown, Spinner, Button } from "react-bootstrap";
-import { Open_to, Add_profile, More } from "./ProfileDropdown";
 import { Route } from "react-router-dom";
 import About from "./About";
 import Featured from "./Featured";
-import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import Dashboard from "./Dashboard";
 import ExpEdu from "./ExpEdu";
 import Activity from "./Activity";
+import Footer from "./Footer"
+
+import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 
 export default class MainBody1 extends Component {
   state = {
@@ -164,6 +165,15 @@ export default class MainBody1 extends Component {
             <ExpEdu user_id={this.state.profileData._id} />
           </>
         )}
+<<<<<<< HEAD
+=======
+        <About />
+        <Featured />
+        <Activity />
+        <Dashboard />
+        <ExpEdu />
+#       <Footer />
+>>>>>>> main
       </div>
     );
   }
