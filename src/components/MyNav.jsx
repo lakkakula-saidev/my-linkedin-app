@@ -29,12 +29,12 @@ class MyNav extends Component {
           style={{
             position: "fixed",
             top: 0,
-            height: "4em",
+            height: "3.5em",
             zIndex: 100,
             overflow: "hidden",
+            backgroundColor: "white",
           }}
           className=" w-100 p-0"
-          bg="light"
           expand="lg"
         >
           {/* <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand> */}
@@ -69,7 +69,7 @@ class MyNav extends Component {
                 className="search"
                 placeholder="Search"
                 style={{
-                  width: "auto",
+                  width: "17rem",
                   left: "3rem",
                   position: "relative",
                   backgroundColor: "rgb(238, 243, 248)",
@@ -83,10 +83,10 @@ class MyNav extends Component {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav
               className="align-items: center "
-              style={{ marginLeft: "10rem" }}
+              style={{ marginLeft: "19rem" }}
             >
               <Nav.Link
-                className="mx-3 my-auto"
+                className="mx-2 my-auto"
                 style={{
                   display: "flex",
                   flexDirection: "column",
@@ -98,7 +98,7 @@ class MyNav extends Component {
                 <p className="m-0 p-0 ">Home</p>
               </Nav.Link>
               <Nav.Link
-                className="mx-3 my-auto"
+                className="mx-2 my-auto"
                 style={{
                   display: "flex",
                   flexDirection: "column",
@@ -110,7 +110,7 @@ class MyNav extends Component {
                 <p className="m-0">My Network</p>
               </Nav.Link>
               <Nav.Link
-                className="mx-3 my-auto"
+                className="mx-2 my-auto"
                 style={{
                   display: "flex",
                   flexDirection: "column",
@@ -122,7 +122,7 @@ class MyNav extends Component {
                 <p className="m-0 text-center">Jobs</p>
               </Nav.Link>
               <Nav.Link
-                className="mx-3 my-auto"
+                className="mx-2 my-auto"
                 style={{
                   display: "flex",
                   flexDirection: "column",
@@ -134,7 +134,7 @@ class MyNav extends Component {
                 <p className="m-0 text-center">Messaging</p>
               </Nav.Link>
               <Nav.Link
-                className="mx-3 my-auto"
+                className="mx-2 my-auto"
                 style={{
                   display: "flex",
                   flexDirection: "column",
@@ -151,9 +151,9 @@ class MyNav extends Component {
                 title={
                   <>
                     <div>
-                      <PersonRoundedIcon style={{ fontSize: 40 }} />
+                      <PersonRoundedIcon style={{ fontSize: 28 }} />
                     </div>
-                    <span>Me</span>
+                    <span style={{ fontSize: "0.7rem" }}>Me</span>
                   </>
                 }
                 id="basic-nav-dropdown"
@@ -178,9 +178,9 @@ class MyNav extends Component {
                 title={
                   <>
                     <div>
-                      <AppsRoundedIcon style={{ fontSize: 40 }} />
+                      <AppsRoundedIcon style={{ fontSize: 28 }} />
                     </div>
-                    <span>Work</span>
+                    <span style={{ fontSize: "0.7rem" }}>Work</span>
                   </>
                 }
                 id="basic-nav-dropdown"
@@ -200,7 +200,7 @@ class MyNav extends Component {
               <Nav.Link className="mx-3 my-auto" href="#home">
                 <p
                   className="m-0 p-0 redLink text-center"
-                  style={{ maxWidth: "7rem" }}
+                  style={{ maxWidth: "6rem" }}
                 >
                   Try Premium Free for 1 Month
                 </p>
