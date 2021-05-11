@@ -41,7 +41,7 @@ class MyNav extends Component {
           {/* <div className="ml-5 px-5"></div> */}
           <div
             style={{
-              marginLeft: "17rem",
+              marginLeft: "18rem",
               display: "flex",
               alignContent: "center",
               justifyContent: "space-evenly",
@@ -83,7 +83,7 @@ class MyNav extends Component {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav
               className="align-items: center "
-              style={{ marginLeft: "19rem" }}
+              style={{ marginLeft: "10rem" }}
             >
               <Nav.Link
                 className="mx-2 my-auto"
@@ -158,7 +158,7 @@ class MyNav extends Component {
                 }
                 id="basic-nav-dropdown"
               >
-                <NavDropdown.Item href="#action/3.1"></NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.1">action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
                   Another action
                 </NavDropdown.Item>
