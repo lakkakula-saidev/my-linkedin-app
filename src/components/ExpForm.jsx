@@ -49,6 +49,7 @@ class ExpForm extends Component {
                 id="basic-title"
                 placeholder="Ex: Retail Sales Manager"
                 aria-describedby="basic-addon3"
+                required
               />
             </div>
             <div className="mt-4">
@@ -82,6 +83,7 @@ class ExpForm extends Component {
                 id="Company"
                 placeholder="Ex: Retail Sales Manager"
                 aria-describedby="basic-addon3"
+                required
               />
             </div>
             <div className="mt-3 mb-3">
@@ -92,6 +94,7 @@ class ExpForm extends Component {
                 id="Company"
                 placeholder="Ex:London,United Kingdom"
                 aria-describedby="basic-addon3"
+                required
               />
             </div>
 
