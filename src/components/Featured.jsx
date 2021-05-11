@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import EditIcon from "@material-ui/icons/Edit";
+import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import AddIcon from "@material-ui/icons/Add";
 
 export default class Featured extends Component {
@@ -13,7 +13,7 @@ export default class Featured extends Component {
               <AddIcon />
             </div>
             <div className="Icon">
-              <EditIcon />
+              <EditOutlinedIcon />
             </div>
           </div>
         </div>
