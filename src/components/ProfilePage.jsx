@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Jumbotron, Container, Col, Image, Row } from "react-bootstrap";
-import { DropdownButton, Dropdown, Spinner } from "react-bootstrap";
+import { DropdownButton, Dropdown, Spinner, Button } from "react-bootstrap";
+import { Open_to, Add_profile, More } from "./ProfileDropdown";
 import { Route } from "react-router-dom";
-import About from "../About";
+import About from "./About";
 import Featured from "./Featured";
 import Dashboard from "./Dashboard";
 import ExpEdu from "./ExpEdu";
@@ -12,6 +13,10 @@ import EducationContent from "./EducationContent"
 import ExpEduCard from "./ExpEduCard"
 import Interests from "./interests";
 
+import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
+import Dashboard from "./Dashboard";
+import ExpEdu from "./ExpEdu";
+import Activity from "./Activity";
 
 export default class MainBody1 extends Component {
   state = {
@@ -51,7 +56,21 @@ export default class MainBody1 extends Component {
               src="https://source.unsplash.com/random"
               className="jumboImage"
             />
+
             <Row className="jumboRow">
+              <div className="d-flex justify-content-between profileIconRow">
+                <div className="profileIcon">
+                  <Button variant="outline-primary profileButton">
+                    <img
+                      src="https://source.unsplash.com/random"
+                      class="roundedImg "
+                    />
+                  </Button>
+                </div>
+                <div className="align-self-center">
+                  <EditOutlinedIcon />
+                </div>
+              </div>
               <Col className="jumboRow-col1">
                 <h2>
                   {/* {this.state.profileData.name}
@@ -65,68 +84,90 @@ export default class MainBody1 extends Component {
                   distinctio eum a obcaecati, ab voluptas?
                 </p>
                 <Row className="infoRow">
-                  <Col>Strive School, Germany</Col>
-                  <Col>
-                    <ul>
-                      <li>
-                        <div>Number of connections</div>
-                      </li>
-                    </ul>
-                  </Col>
-                  <Col>
-                    <ul>
-                      <li>Contact info</li>
-                    </ul>
-                  </Col>
+                  <ul>
+                    <li>Strive School, Germany &middot;</li>
+
+                    <li>
+                      <a href="">Number of connections &middot;</a>
+                    </li>
+
+                    <li>
+                      <a href="">Contact info</a>
+                    </li>
+                  </ul>
                 </Row>
                 <Row className="infoRow">
-                  <Col>
-                    <DropdownButton id="dropdown-basic-button" title="Open to">
-                      <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                      <Dropdown.Item href="#/action-2">
-                        Another action
-                      </Dropdown.Item>
-                      <Dropdown.Item href="#/action-3">
-                        Something else
-                      </Dropdown.Item>
-                    </DropdownButton>
-                  </Col>
-                  <Col>
-                    <DropdownButton
-                      id="dropdown-basic-button"
-                      title="Add profile section"
-                    >
-                      <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                      <Dropdown.Item href="#/action-2">
-                        Another action
-                      </Dropdown.Item>
-                      <Dropdown.Item href="#/action-3">
-                        Something else
-                      </Dropdown.Item>
-                    </DropdownButton>
-                  </Col>
-                  <Col>
-                    <DropdownButton id="dropdown-basic-button" title="More..">
-                      <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                      <Dropdown.Item href="#/action-2">
-                        Another action
-                      </Dropdown.Item>
-                      <Dropdown.Item href="#/action-3">
-                        Something else
-                      </Dropdown.Item>
-                    </DropdownButton>
-                  </Col>
+                  <ul>
+                    <li>
+                      <div>
+                        <DropdownButton
+                          id="dropdown-basic-button"
+                          title="Open to"
+                        >
+                          <Dropdown.Item href="#/action-1">
+                            Action
+                          </Dropdown.Item>
+                          <Dropdown.Item href="#/action-2">
+                            Another action
+                          </Dropdown.Item>
+                          <Dropdown.Item href="#/action-3">
+                            Something else
+                          </Dropdown.Item>
+                        </DropdownButton>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <DropdownButton
+                          id="dropdown-basic-button"
+                          title="Add profile section"
+                        >
+                          <Dropdown.Item href="#/action-1">
+                            Action
+                          </Dropdown.Item>
+                          <Dropdown.Item href="#/action-2">
+                            Another action
+                          </Dropdown.Item>
+                          <Dropdown.Item href="#/action-3">
+                            Something else
+                          </Dropdown.Item>
+                        </DropdownButton>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <DropdownButton
+                          id="dropdown-basic-button"
+                          title="More.."
+                        >
+                          <Dropdown.Item href="#/action-1">
+                            Action
+                          </Dropdown.Item>
+                          <Dropdown.Item href="#/action-2">
+                            Another action
+                          </Dropdown.Item>
+                          <Dropdown.Item href="#/action-3">
+                            Something else
+                          </Dropdown.Item>
+                        </DropdownButton>
+                      </div>
+                    </li>
+                  </ul>{" "}
                 </Row>
               </Col>
 
               <Col className="jumboRow-col2">
-                <h2>Current position</h2>
+                <h6>Current position</h6>
               </Col>
             </Row>
           </Jumbotron>
         )}
         <About />
         <Featured />
-</div>
-    )}
+        <Activity />
+        <Dashboard />
+        <ExpEdu />
+      </div>
+    );
+  }
 }
