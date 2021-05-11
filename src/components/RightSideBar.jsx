@@ -1,4 +1,4 @@
-/** @format */
+
 
 import { Component } from "react";
 import {
@@ -13,6 +13,7 @@ import {
 import pic from "../leoAssets/ciao.jpg";
 import "../styleLeo.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import HelpIcon from '@material-ui/icons/Help';
 
 import React from "react";
 
@@ -69,28 +70,28 @@ class RightSideBar extends Component {
     return (
       <>
         <Container>
-          <Col>
-            <Button className="borderR" variant="outline-secondary">
+          <div className="backG upperP"><Col >
+          <Button className="borderR" variant="primary">
               Connect
             </Button>
             <Button className="borderR" variant="primary">
               Connect
             </Button>
-            <p>Modifica il profilo pubblico e l’URL</p>
+    <p className="boldness">Modifica il profilo pubblico e l’URL </p>
+          
           </Col>
+          </div>
 
           <Col
-            xs={1}
-            md={4}
-            lg={4}
+            
             style={{ backgroundColor: "white" }}
-            className="borderR"
+            className="   backG"
           >
-            <Card style={{ width: "18rem" }}>
+            <Card className=" imageProfile" style={{ width: "14rem"}}>
               <Card.Img variant="top" src={pic} />
             </Card>
           </Col>
-          <Col xs={3} md={3} lg={3} className="borderR">
+          <Col  className=" backG">
             <h6>Other people</h6>
 
             {this.state.reservations.slice(0, 8).map((user) => (
@@ -111,7 +112,7 @@ class RightSideBar extends Component {
               </div>
             ))}
           </Col>
-          <Col xs={3} md={3} lg={3} className="borderR">
+          <Col  className="backG">
             <h6>People you may know</h6>
             {this.state.reservations.slice(0, 8).map((user) => (
               <div className=" sizer" key={user._id}>
