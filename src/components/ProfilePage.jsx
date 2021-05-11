@@ -163,6 +163,7 @@ export default class MainBody1 extends Component {
             <Activity />
             <Dashboard />
             <ExpEdu user_id={this.state.profileData._id} />
+            <Footer />
           </>
         )}
       </div>
