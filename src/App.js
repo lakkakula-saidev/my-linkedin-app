@@ -2,7 +2,7 @@
 import "./App.css";
 import RightSideBar from "./components/RightSideBar";
 import MyNav from "./components/MyNav";
-
+import Footer from "./components/Footer";
 import Dashboard from "./components/Dashboard";
 import Activity from "./components/Activity";
 import ExpEdu from "./components/ExpEdu";
@@ -25,6 +25,7 @@ function App() {
           </Col>
         </Row>
       </Container>
+      <Footer />
     </div>
   );
 }

@@ -9,6 +9,7 @@ class ExperienceEducation extends React.Component {
   state = {
     Experience: [],
     showForm: false,
+    user_id: this.props.user_id,
   };
 
   async loadExperience(id) {
@@ -38,6 +39,29 @@ class ExperienceEducation extends React.Component {
   componentDidMount() {
     this.loadExperience(this.props.user_id);
   }
+  /*  async loadSingleExperience(id) {
+    const endpoint = `  https://striveschool-api.herokuapp.com/api/profile/${this.state.user_id}/experiences/${id}`;
+
+    try {
+      let response = await fetch(endpoint, {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZTllNDYxOWU1ZDAwMTUxZjhmNzkiLCJpYXQiOjE2MjA2MzQwODUsImV4cCI6MTYyMTg0MzY4NX0.LVFiiWvC5hj_tkyYlnYiUZd9DafCRH7foRwmjGXSjPM",
+        },
+      });
+      if (response.ok) {
+        response = await response.json();
+        this.setState({
+          Experience: response,
+        });
+        this.setState({ isLoading: !this.state.isloading });
+        console.log(this.state.Experience);
+      }
+    } catch (error) {
+    } finally {
+    }
+  } */
+
   render() {
     return (
       <>
@@ -74,14 +98,18 @@ class ExperienceEducation extends React.Component {
                 </div>
               </div>
               <div>
-                <a href="">
+                <div
+                  id={item._id}
+                  /*  onClick={(e) => this.loadSingleExperience(e.target.id)} */
+                >
                   <EditOutlinedIcon />
-                </a>
+                </div>
               </div>
             </div>
           ))}
           <hr></hr>
           <ExpForm
+            user_id={this.state.user_id}
             show={this.state.showForm}
             closeFunc={() => this.setState({ showForm: false })}
           />
