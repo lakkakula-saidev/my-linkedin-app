@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import EditIcon from "@material-ui/icons/Edit";
+import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 
 export default class About extends Component {
   render() {
@@ -7,7 +7,7 @@ export default class About extends Component {
       <div className="aboutCard">
         <div className="d-flex justify-content-between">
           <h3>About</h3>
-          <EditIcon />
+          <EditOutlinedIcon />
         </div>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias
         blanditiis, quo eveniet consequatur laborum vel maiores illo, eaque
