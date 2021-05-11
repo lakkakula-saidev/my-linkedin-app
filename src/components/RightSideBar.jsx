@@ -14,6 +14,7 @@ import pic from "../leoAssets/ciao.jpg";
 import "../styleLeo.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import HelpIcon from '@material-ui/icons/Help';
+import LanguageIcon from '@material-ui/icons/Language';
 
 import React from "react";
 
@@ -70,14 +71,17 @@ class RightSideBar extends Component {
     return (
       <>
         <Container>
-          <div className="backG upperP"><Col >
-          <Button className="borderR" variant="primary">
+          <div className=" margy"><Col >
+         <div className="margy"> <Button size="sm" className="borderR" variant="primary">
               Connect
             </Button>
-            <Button className="borderR" variant="primary">
+            <Button size="sm" className="borderR" variant="primary">
               Connect
             </Button>
-    <p className="boldness">Modifica il profilo pubblico e l’URL </p>
+            <LanguageIcon/>
+            
+            </div>
+    <p className="boldness">Modifica il profilo pubblico e l’URL <HelpIcon fontSize="small" /></p>
           
           </Col>
           </div>
@@ -85,13 +89,13 @@ class RightSideBar extends Component {
           <Col
             
             style={{ backgroundColor: "white" }}
-            className="   backG"
+            className="upperP   backG"
           >
             <Card className=" imageProfile" style={{ width: "14rem"}}>
               <Card.Img variant="top" src={pic} />
             </Card>
           </Col>
-          <Col  className=" backG">
+          <Col  className=" upperP backG">
             <h6>Other people</h6>
 
             {this.state.reservations.slice(0, 8).map((user) => (

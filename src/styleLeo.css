@@ -105,5 +105,10 @@ button {
 
 .upperP {
     padding: 1px;
-    
+    margin-bottom:30px;
+    display: block;
+}
+
+.margy {
+margin-bottom:15px;
 }
