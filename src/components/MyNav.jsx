@@ -13,6 +13,8 @@ import PersonRoundedIcon from "@material-ui/icons/PersonRounded";
 
 import {
   Navbar,
+  Form,
+  Button,
   Nav,
   NavDropdown,
   FormControl,
@@ -22,21 +24,24 @@ import {
 class MyNav extends Component {
   render() {
     return (
-      <Navbar
-        style={{
-          position: "fixed",
-          top: 0,
-          height: "3.5em",
-          zIndex: 100,
-          overflow: "hidden",
-          backgroundColor: "white",
-        }}
-        className=" w-100 p-0 "
-        expand="lg"
-      >
-        <div className="mx-auto" style={{ display: "flex" }}>
+      <>
+        <Navbar
+          style={{
+            position: "fixed",
+            top: 0,
+            height: "3.5em",
+            zIndex: 100,
+            overflow: "hidden",
+            backgroundColor: "white",
+          }}
+          className=" w-100 p-0"
+          expand="lg"
+        >
+          {/* <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand> */}
+          {/* <div className="ml-5 px-5"></div> */}
           <div
             style={{
+              marginLeft: "17rem",
               display: "flex",
               alignContent: "center",
               justifyContent: "space-evenly",
@@ -78,7 +83,7 @@ class MyNav extends Component {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav
               className="align-items: center "
-              style={{ marginLeft: "10rem" }}
+              style={{ marginLeft: "19rem" }}
             >
               <Nav.Link
                 className="mx-2 my-auto"
@@ -153,7 +158,7 @@ class MyNav extends Component {
                 }
                 id="basic-nav-dropdown"
               >
-                <NavDropdown.Item href="#action/3.1">action</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.1"></NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
                   Another action
                 </NavDropdown.Item>
@@ -202,8 +207,8 @@ class MyNav extends Component {
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
-        </div>
-      </Navbar>
+        </Navbar>
+      </>
     );
   }
 }
