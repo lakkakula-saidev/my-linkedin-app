@@ -26,49 +26,122 @@ class MyNav extends Component {
     return (
       <>
         <Navbar
-          style={{ position: "fixed", top: 0, height: "4em", zIndex: 100 }}
-          className=" w-100 p-0 "
-          bg="light"
+          style={{
+            position: "fixed",
+            top: 0,
+            height: "3.5em",
+            zIndex: 100,
+            overflow: "hidden",
+            backgroundColor: "white",
+          }}
+          className=" w-100 p-0"
           expand="lg"
         >
           {/* <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand> */}
-          <div className="px-5"></div>
-          <LinkedInIcon style={{ color: "rgb(10,102,194)", fontSize: 50 }} />
-
-          <InputGroup>
-            <InputGroup.Prepend>
-              <InputGroup.Text id="basic-addon3">
-                {<SearchIcon style={{ backgroundColor: "rgb(238,243,248)" }} />}
-              </InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              id="basic-url"
-              placeholder="Search"
-              style={{ backgroundColor: "rgb(238,243,248)" }}
-              type="text"
-              aria-describedby="basic-addon3"
-            />
-          </InputGroup>
+          {/* <div className="ml-5 px-5"></div> */}
+          <div
+            style={{
+              marginLeft: "17rem",
+              display: "flex",
+              alignContent: "center",
+              justifyContent: "space-evenly",
+              alignItems: "center",
+            }}
+          >
+            <LinkedInIcon style={{ color: "rgb(10,102,194)", fontSize: 50 }} />
+            <InputGroup>
+              <InputGroup.Prepend>
+                <InputGroup.Text
+                  id="basic-addon3"
+                  className="input-group-text"
+                  id="basic-addon3"
+                  style={{ position: "absolute", maxWidth: "fit-content" }}
+                >
+                  {
+                    <SearchIcon
+                      style={{ backgroundColor: "rgb(238,243,248)" }}
+                    />
+                  }
+                </InputGroup.Text>
+              </InputGroup.Prepend>
+              <FormControl
+                id="basic-url"
+                className="search"
+                placeholder="Search"
+                style={{
+                  width: "17rem",
+                  left: "3rem",
+                  position: "relative",
+                  backgroundColor: "rgb(238, 243, 248)",
+                }}
+                type="text"
+                aria-describedby="basic-addon3"
+              />
+            </InputGroup>
+          </div>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="align-items: center ">
-              <Nav.Link className="mx-3 my-auto" href="#home">
+            <Nav
+              className="align-items: center "
+              style={{ marginLeft: "19rem" }}
+            >
+              <Nav.Link
+                className="mx-2 my-auto"
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+                href="#home"
+              >
                 {<HomeRoundedIcon style={{ fontSize: 33 }} />}
                 <p className="m-0 p-0 ">Home</p>
               </Nav.Link>
-              <Nav.Link className="mx-3 my-auto" href="#MyNet">
+              <Nav.Link
+                className="mx-2 my-auto"
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+                href="#MyNet"
+              >
                 {<PeopleAltRoundedIcon style={{ fontSize: 33 }} />}
                 <p className="m-0">My Network</p>
               </Nav.Link>
-              <Nav.Link className="mx-3 my-auto" href="#Jobs">
+              <Nav.Link
+                className="mx-2 my-auto"
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+                href="#Jobs"
+              >
                 {<WorkRoundedIcon style={{ fontSize: 33 }} />}
                 <p className="m-0 text-center">Jobs</p>
               </Nav.Link>
-              <Nav.Link className="mx-3 my-auto" href="#Messaging">
+              <Nav.Link
+                className="mx-2 my-auto"
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+                href="#Messaging"
+              >
                 {<SmsRoundedIcon style={{ fontSize: 33 }} />}
                 <p className="m-0 text-center">Messaging</p>
               </Nav.Link>
-              <Nav.Link className="mx-3 my-auto" href="#Noti">
+              <Nav.Link
+                className="mx-2 my-auto"
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+                href="#Noti"
+              >
                 {<NotificationsRoundedIcon style={{ fontSize: 33 }} />}
                 <p className="m-0 ">Notifications</p>
               </Nav.Link>
@@ -78,9 +151,9 @@ class MyNav extends Component {
                 title={
                   <>
                     <div>
-                      <PersonRoundedIcon style={{ fontSize: 40 }} />
+                      <PersonRoundedIcon style={{ fontSize: 28 }} />
                     </div>
-                    <span>Me</span>
+                    <span style={{ fontSize: "0.7rem" }}>Me</span>
                   </>
                 }
                 id="basic-nav-dropdown"
@@ -105,9 +178,9 @@ class MyNav extends Component {
                 title={
                   <>
                     <div>
-                      <AppsRoundedIcon style={{ fontSize: 40 }} />
+                      <AppsRoundedIcon style={{ fontSize: 28 }} />
                     </div>
-                    <span>Work</span>
+                    <span style={{ fontSize: "0.7rem" }}>Work</span>
                   </>
                 }
                 id="basic-nav-dropdown"
@@ -125,7 +198,10 @@ class MyNav extends Component {
                 </NavDropdown.Item>
               </NavDropdown>
               <Nav.Link className="mx-3 my-auto" href="#home">
-                <p className="m-0 p-0" style={{ fontSize: "0.6rem" }}>
+                <p
+                  className="m-0 p-0 redLink text-center"
+                  style={{ maxWidth: "6rem" }}
+                >
                   Try Premium Free for 1 Month
                 </p>
               </Nav.Link>

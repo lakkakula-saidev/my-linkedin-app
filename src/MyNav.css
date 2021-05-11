@@ -1,7 +1,17 @@
 p {
-  font-size: small;
+  font-size: 0.7rem;
 }
 
 .br {
-  border-right: 1px solid grey;
+  border-right: 0.5px solid grey;
+}
+
+.search {
+  max-width: 15rem;
+}
+.redLink {
+  color: rgb(173, 89, 7);
+}
+.redLink:hover {
+  text-decoration: underline;
 }
