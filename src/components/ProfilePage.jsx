@@ -6,6 +6,9 @@ import { Route } from "react-router-dom";
 import About from "./About";
 import Featured from "./Featured";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
+import Dashboard from "./Dashboard";
+import ExpEdu from "./ExpEdu";
+import Activity from "./Activity";
 
 export default class MainBody1 extends Component {
   state = {
@@ -35,7 +38,7 @@ export default class MainBody1 extends Component {
 
   render() {
     return (
-      <Col md={8} lg={8} className="px-0 mainBody1">
+      <div className="px-0 mainBody1">
         {this.state.isLoading && (
           <Spinner className="loader" animation="border" variant="primary" />
         )}
@@ -153,7 +156,10 @@ export default class MainBody1 extends Component {
         )}
         <About />
         <Featured />
-      </Col>
+        <Activity />
+        <Dashboard />
+        <ExpEdu />
+      </div>
     );
   }
 }
