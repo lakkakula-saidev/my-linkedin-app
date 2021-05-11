@@ -1,22 +1,15 @@
 import React, { Component } from "react";
 import { Jumbotron, Container, Col, Image, Row } from "react-bootstrap";
 import { DropdownButton, Dropdown, Spinner, Button } from "react-bootstrap";
-import { Open_to, Add_profile, More } from "./ProfileDropdown";
 import { Route } from "react-router-dom";
 import About from "./About";
 import Featured from "./Featured";
 import Dashboard from "./Dashboard";
 import ExpEdu from "./ExpEdu";
 import Activity from "./Activity";
-import ExperienceContent from "./ExperienceContent"
-import EducationContent from "./EducationContent"
-import ExpEduCard from "./ExpEduCard"
 import Interests from "./interests";
 
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
-import Dashboard from "./Dashboard";
-import ExpEdu from "./ExpEdu";
-import Activity from "./Activity";
 
 export default class MainBody1 extends Component {
   state = {
@@ -167,6 +160,7 @@ export default class MainBody1 extends Component {
         <Activity />
         <Dashboard />
         <ExpEdu />
+        <Interests />
       </div>
     );
   }
