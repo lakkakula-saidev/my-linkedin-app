@@ -5,6 +5,14 @@ import { Open_to, Add_profile, More } from "./ProfileDropdown";
 import { Route } from "react-router-dom";
 import About from "./About";
 import Featured from "./Featured";
+import Dashboard from "./Dashboard";
+import ExpEdu from "./ExpEdu";
+import Activity from "./Activity";
+import ExperienceContent from "./ExperienceContent"
+import EducationContent from "./EducationContent"
+import ExpEduCard from "./ExpEduCard"
+import Interests from "./interests";
+
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import Dashboard from "./Dashboard";
 import ExpEdu from "./ExpEdu";
