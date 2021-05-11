@@ -7,7 +7,7 @@ import Featured from "./Featured";
 import Dashboard from "./Dashboard";
 import ExpEdu from "./ExpEdu";
 import Activity from "./Activity";
-import Interests from "./interests";
+import Footer from "./Footer"
 
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 
@@ -160,7 +160,7 @@ export default class MainBody1 extends Component {
         <Activity />
         <Dashboard />
         <ExpEdu />
-        <Interests />
+#       <Footer />
       </div>
     );
   }
