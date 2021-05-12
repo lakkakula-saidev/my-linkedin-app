@@ -112,3 +112,45 @@ button {
 .margy {
 margin-bottom:15px;
 }
+
+.postP {
+    font-size: medium;
+
+}
+
+.padder {
+    margin:20px;
+}
+.grey {
+    color:#6c757d
+}
+.mar {
+    margin-left: 10px;
+}
+
+.mar2{
+    margin-left: 20px;
+}
+
+.justi {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 200px;
+    padding: 10px;
+
+}
+
+.containerA {
+    position: fixed;
+    left: 350px;
+    padding: 0;
+    margin: 0;
+    background-color: #ff00ff;
+}
+
+.left-elementA {
+    
+    display: inline-block;
+    float: left;
+}
