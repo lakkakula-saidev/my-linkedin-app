@@ -48,8 +48,15 @@ h6 {
      flex-direction: row;
      justify-content: start;
      margin-bottom: 10px;
+     padding: 10px;
 
   }
+  .imageProfile {
+      margin-left: 4px;
+      margin-bottom: 4px;
+      margin-top: 5px;
+  }
+  
 
  
 
@@ -87,4 +94,21 @@ button {
     margin-right: 5px !important
 
     
+}
+.backG {
+    background-color: white;
+    border-radius: 10px;
+    background-repeat: no-repeat;
+  background-size: auto;
+
+}
+
+.upperP {
+    padding: 1px;
+    margin-bottom:30px;
+    display: block;
+}
+
+.margy {
+margin-bottom:15px;
 }

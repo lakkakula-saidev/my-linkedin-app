@@ -20,18 +20,32 @@ class ExpForm extends Component {
       description: "",
     },
   };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.editExperience !== this.props.editExperience) {
+      this.setState({ experience: this.props.editExperience });
+    }
+  }
+
   render() {
+    {
+      console.log(this.props.editExperience);
+    }
     return (
       <>
         <Modal
           show={this.props.show}
-          onHide={this.props.closeFunc}
+          onHide={this.props.cancelForm}
           size="lg"
           scrollable={true}
           style={{ height: "100vh" }}
         >
           <Modal.Header>
-            <Modal.Title>Add Experience</Modal.Title>
+            <Modal.Title>
+              {Object.keys(this.props.editExperience).length === 0
+                ? "Add Experience"
+                : "Edit Experience"}
+            </Modal.Title>
             <div
               className="ml-auto m-0 p-0"
               onClick={this.props.closeFunc}
@@ -49,6 +63,15 @@ class ExpForm extends Component {
                 id="basic-title"
                 placeholder="Ex: Retail Sales Manager"
                 aria-describedby="basic-addon3"
+                value={this.state.experience.role}
+                onChange={(e) =>
+                  this.setState({
+                    experience: {
+                      ...this.state.experience,
+                      role: e.target.value,
+                    },
+                  })
+                }
                 required
               />
             </div>
@@ -83,6 +106,15 @@ class ExpForm extends Component {
                 id="Company"
                 placeholder="Ex: Retail Sales Manager"
                 aria-describedby="basic-addon3"
+                value={this.state.experience.company}
+                onChange={(e) =>
+                  this.setState({
+                    experience: {
+                      ...this.state.experience,
+                      company: e.target.value,
+                    },
+                  })
+                }
                 required
               />
             </div>
@@ -94,6 +126,15 @@ class ExpForm extends Component {
                 id="Company"
                 placeholder="Ex:London,United Kingdom"
                 aria-describedby="basic-addon3"
+                value={this.state.experience.area}
+                onChange={(e) =>
+                  this.setState({
+                    experience: {
+                      ...this.state.experience,
+                      area: e.target.value,
+                    },
+                  })
+                }
                 required
               />
             </div>
@@ -143,6 +184,15 @@ class ExpForm extends Component {
                   id="startDate"
                   className="mx-3"
                   required
+                  value={this.state.experience.startDate}
+                  onChange={(e) =>
+                    this.setState({
+                      experience: {
+                        ...this.state.experience,
+                        startDate: e.target.value,
+                      },
+                    })
+                  }
                 />
                 {!this.state.experience.startDate && (
                   <p className="invalid mt-3">Please enter a start date.</p>
@@ -156,6 +206,15 @@ class ExpForm extends Component {
                     type="date"
                     id="startDate"
                     className="mx-3"
+                    value={this.state.experience.endDate}
+                    onChange={(e) =>
+                      this.setState({
+                        experience: {
+                          ...this.state.experience,
+                          endDate: e.target.value,
+                        },
+                      })
+                    }
                     required
                   />
                 )}
@@ -171,7 +230,15 @@ class ExpForm extends Component {
                 className="form-control"
                 id="exampleFormControlTextarea1"
                 rows={4}
-                defaultValue={""}
+                value={this.state.experience.description}
+                onChange={(e) =>
+                  this.setState({
+                    experience: {
+                      ...this.state.experience,
+                      description: e.target.value,
+                    },
+                  })
+                }
               />
               <p className="mt-3" style={{ fontSize: "0.8rem" }}>
                 Media{" "}
@@ -197,7 +264,28 @@ class ExpForm extends Component {
               Supported formats
             </span>
           </Modal.Body>
-          <Modal.Footer className="d-flex">
+          <Modal.Footer className="d-flex justify-content-between flex-row">
+            {Object.keys(this.props.editExperience).length !== 0 ? (
+              <button
+                style={{
+                  color: "white",
+                  backgroundColor: "rgb(10,102,194)",
+                  border: "none",
+                  borderRadius: "2rem",
+                  minWidth: "4rem",
+                  minHeight: "2rem",
+                }}
+                ClassName="ml-auto"
+                onClick={() =>
+                  this.props.closeForm(this.state.experience, true)
+                }
+              >
+                Delete
+              </button>
+            ) : (
+              <></>
+            )}
+
             <button
               style={{
                 color: "white",
@@ -208,7 +296,7 @@ class ExpForm extends Component {
                 minHeight: "2rem",
               }}
               ClassName="ml-auto"
-              onClick={this.props.closeFunc}
+              onClick={() => this.props.closeForm(this.state.experience, false)}
             >
               Save
             </button>
@@ -218,5 +306,4 @@ class ExpForm extends Component {
     );
   }
 }
-
 export default ExpForm;

@@ -163,3 +163,7 @@ h4 {
   color: var(--color-text-low-emphasis-shift);
   border: 1.8px solid #5e5e5e;
 }
+
+.editExp {
+  cursor: pointer;
+}
