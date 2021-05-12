@@ -1,0 +1,32 @@
+.postParent {
+  background-color: white;
+  border-radius: 1rem;
+  max-width: 540px;
+  min-height: 116px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+.postImg {
+  width: 48px;
+  height: 48px;
+  border-radius: 49%;
+  padding: 0;
+}
+
+.postBtn {
+  height: 48px;
+  font-size: 0.9rem;
+  min-width: 80%;
+  padding-right: 60%;
+
+  background-color: white;
+  border-radius: 5rem;
+  border: 1px solid grey;
+}
+.postBtn:hover {
+  background-color: #d8dcde;
+}
+.link {
+  cursor: pointer;
+}
