@@ -49,6 +49,15 @@ class ExpForm extends Component {
                 id="basic-title"
                 placeholder="Ex: Retail Sales Manager"
                 aria-describedby="basic-addon3"
+                value={this.state.experience.role}
+                onChange={(e) =>
+                  this.setState({
+                    experience: {
+                      ...this.state.experience,
+                      role: e.target.value,
+                    },
+                  })
+                }
                 required
               />
             </div>
@@ -83,6 +92,15 @@ class ExpForm extends Component {
                 id="Company"
                 placeholder="Ex: Retail Sales Manager"
                 aria-describedby="basic-addon3"
+                value={this.state.experience.company}
+                onChange={(e) =>
+                  this.setState({
+                    experience: {
+                      ...this.state.experience,
+                      company: e.target.value,
+                    },
+                  })
+                }
                 required
               />
             </div>
@@ -94,6 +112,15 @@ class ExpForm extends Component {
                 id="Company"
                 placeholder="Ex:London,United Kingdom"
                 aria-describedby="basic-addon3"
+                value={this.state.experience.area}
+                onChange={(e) =>
+                  this.setState({
+                    experience: {
+                      ...this.state.experience,
+                      area: e.target.value,
+                    },
+                  })
+                }
                 required
               />
             </div>
@@ -143,6 +170,15 @@ class ExpForm extends Component {
                   id="startDate"
                   className="mx-3"
                   required
+                  value={this.state.experience.startDate}
+                  onChange={(e) =>
+                    this.setState({
+                      experience: {
+                        ...this.state.experience,
+                        startDate: e.target.value,
+                      },
+                    })
+                  }
                 />
                 {!this.state.experience.startDate && (
                   <p className="invalid mt-3">Please enter a start date.</p>
@@ -156,6 +192,15 @@ class ExpForm extends Component {
                     type="date"
                     id="startDate"
                     className="mx-3"
+                    value={this.state.experience.endDate}
+                    onChange={(e) =>
+                      this.setState({
+                        experience: {
+                          ...this.state.experience,
+                          endDate: e.target.value,
+                        },
+                      })
+                    }
                     required
                   />
                 )}
@@ -171,7 +216,15 @@ class ExpForm extends Component {
                 className="form-control"
                 id="exampleFormControlTextarea1"
                 rows={4}
-                defaultValue={""}
+                value={this.state.experience.description}
+                onChange={(e) =>
+                  this.setState({
+                    experience: {
+                      ...this.state.experience,
+                      description: e.target.value,
+                    },
+                  })
+                }
               />
               <p className="mt-3" style={{ fontSize: "0.8rem" }}>
                 Media{" "}
@@ -208,7 +261,7 @@ class ExpForm extends Component {
                 minHeight: "2rem",
               }}
               ClassName="ml-auto"
-              onClick={this.props.closeFunc}
+              onClick={() => this.props.closeForm(this.state.experience)}
             >
               Save
             </button>

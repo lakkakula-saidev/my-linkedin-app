@@ -4,12 +4,16 @@ import AddIcon from "@material-ui/icons/Add";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import ExpForm from "./ExpForm";
 import "../ExpEdu.css";
+import { format, parseISO } from "date-fns";
+/* import { convertDate } from "../helpers/dates"; */
 
 class ExperienceEducation extends React.Component {
   state = {
     Experience: [],
     showForm: false,
     user_id: this.props.user_id,
+    newExperience: false,
+    editExperience: {},
   };
 
   async loadExperience(id) {
@@ -36,32 +40,44 @@ class ExperienceEducation extends React.Component {
     }
   }
 
-  componentDidMount() {
-    this.loadExperience(this.props.user_id);
-  }
-  /*  async loadSingleExperience(id) {
-    const endpoint = `  https://striveschool-api.herokuapp.com/api/profile/${this.state.user_id}/experiences/${id}`;
+  async postExperience(newExp) {
+    const endpoint = ` https://striveschool-api.herokuapp.com/api/profile/${this.props.user_id}/experiences`;
 
     try {
       let response = await fetch(endpoint, {
+        method: "POST",
         headers: {
+          "Content-Type": "application/json",
           Authorization:
             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZTllNDYxOWU1ZDAwMTUxZjhmNzkiLCJpYXQiOjE2MjA2MzQwODUsImV4cCI6MTYyMTg0MzY4NX0.LVFiiWvC5hj_tkyYlnYiUZd9DafCRH7foRwmjGXSjPM",
         },
+        body: JSON.stringify(newExp),
       });
       if (response.ok) {
-        response = await response.json();
-        this.setState({
-          Experience: response,
-        });
-        this.setState({ isLoading: !this.state.isloading });
-        console.log(this.state.Experience);
+        console.log("Your Data is Sucessfully Posted");
       }
     } catch (error) {
-    } finally {
+      alert(error);
     }
-  } */
+  }
+  componentDidMount() {
+    this.loadExperience(this.props.user_id);
+  }
 
+  componentDidUpdate(prevProps, prevState) {
+    console.log(this.state.newExperience);
+    if (prevState.newExperience !== this.state.newExperience) {
+      this.postExperience(this.state.newExperience);
+      this.loadExperience(this.props.user_id);
+    }
+  }
+
+  /*  postData(newExp) {
+    console.log(newExp);
+
+    this.setState({ showForm: false, newExperience: newExp });
+  }
+ */
   render() {
     return (
       <>
@@ -77,7 +93,10 @@ class ExperienceEducation extends React.Component {
           <div className="d-flex mb-2 justify-content-between">
             <h6>Experience</h6>
 
-            <div onClick={() => this.setState({ showForm: true })}>
+            <div
+              className="editExp"
+              onClick={() => this.setState({ showForm: true })}
+            >
               <AddIcon />
             </div>
           </div>
@@ -92,15 +111,20 @@ class ExperienceEducation extends React.Component {
                   <h6>{item.role}</h6>
                   <p>{item.company}</p>
                   <span>
-                    {item.startDate} –
-                    {item.endData !== "" ? item.endData : "present"}
+                    {format(parseISO(item.startDate), "yyyy-MMM-dd")} {" - "}
+                    {item.endData !== ""
+                      ? format(parseISO(item.endDate), "yyyy-MMM-dd")
+                      : "present"}
                   </span>
                 </div>
               </div>
               <div>
                 <div
+                  className="editExp"
                   id={item._id}
-                  /*  onClick={(e) => this.loadSingleExperience(e.target.id)} */
+                  onClick={(e) =>
+                    this.setState({ showForm: true, editExperience: item })
+                  }
                 >
                   <EditOutlinedIcon />
                 </div>
@@ -109,9 +133,15 @@ class ExperienceEducation extends React.Component {
           ))}
           <hr></hr>
           <ExpForm
+            editExperience={this.state.editExperience}
             user_id={this.state.user_id}
             show={this.state.showForm}
-            closeFunc={() => this.setState({ showForm: false })}
+            cancelForm={() => this.setState({ showForm: false })}
+            closeForm={
+              (experience) =>
+                this.setState({ showForm: false, newExperience: experience })
+              /* this.setState({ showForm: false, newExperience: experience } )*/
+            }
           />
         </Row>
       </>
