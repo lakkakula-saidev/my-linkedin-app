@@ -2,7 +2,7 @@
 import "./App.css";
 import RightSideBar from "./components/RightSideBar";
 import MyNav from "./components/MyNav";
-
+import Post from "./components/Post"
 import Dashboard from "./components/Dashboard";
 import Activity from "./components/Activity";
 import ExpEdu from "./components/ExpEdu";
@@ -18,6 +18,7 @@ function App() {
       <Container className="mainContainer">
         <Row className="row">
           <Col md={8} lg={8}>
+            <Post />
             <ProfilePage />
           </Col>
           <Col md={4} lg={4}>
