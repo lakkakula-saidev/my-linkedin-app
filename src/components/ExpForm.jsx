@@ -264,7 +264,28 @@ class ExpForm extends Component {
               Supported formats
             </span>
           </Modal.Body>
-          <Modal.Footer className="d-flex justify-content-between">
+          <Modal.Footer className="d-flex justify-content-between flex-row">
+            {Object.keys(this.props.editExperience).length !== 0 ? (
+              <button
+                style={{
+                  color: "white",
+                  backgroundColor: "rgb(10,102,194)",
+                  border: "none",
+                  borderRadius: "2rem",
+                  minWidth: "4rem",
+                  minHeight: "2rem",
+                }}
+                ClassName="ml-auto"
+                onClick={() =>
+                  this.props.closeForm(this.state.experience, true)
+                }
+              >
+                Delete
+              </button>
+            ) : (
+              <></>
+            )}
+
             <button
               style={{
                 color: "white",
@@ -275,7 +296,7 @@ class ExpForm extends Component {
                 minHeight: "2rem",
               }}
               ClassName="ml-auto"
-              onClick={() => this.props.closeForm(this.state.experience)}
+              onClick={() => this.props.closeForm(this.state.experience, false)}
             >
               Save
             </button>

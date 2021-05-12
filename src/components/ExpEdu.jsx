@@ -14,6 +14,7 @@ class ExperienceEducation extends React.Component {
     user_id: this.props.user_id,
     newExperience: false,
     editExperience: {},
+    delValue: false,
   };
 
   async loadExperience(id) {
@@ -61,12 +62,12 @@ class ExperienceEducation extends React.Component {
     }
   }
 
-  async putExperience(id, ediExp) {
+  async putExperience(id, ediExp, method) {
     const endpoint = ` https://striveschool-api.herokuapp.com/api/profile/${this.props.user_id}/experiences/${id}`;
 
     try {
       let response = await fetch(endpoint, {
-        method: "PUT",
+        method: method,
         headers: {
           "Content-Type": "application/json",
           Authorization:
@@ -89,10 +90,20 @@ class ExperienceEducation extends React.Component {
   async componentDidUpdate(prevProps, prevState) {
     console.log(this.state.newExperience);
     if (prevState.newExperience !== this.state.newExperience) {
-      if (prevState.editExperience !== {}) {
+      if (this.state.delValue === true) {
         await this.putExperience(
           prevState.editExperience._id,
-          this.state.newExperience
+          this.state.newExperience,
+          "DELETE"
+        );
+        await this.loadExperience(this.props.user_id);
+        await this.setState({ delValue: false });
+      } else if (prevState.editExperience !== {}) {
+        console.log();
+        await this.putExperience(
+          prevState.editExperience._id,
+          this.state.newExperience,
+          "PUT"
         );
         await this.loadExperience(this.props.user_id);
       } else {
@@ -172,11 +183,12 @@ class ExperienceEducation extends React.Component {
             user_id={this.state.user_id}
             show={this.state.showForm}
             cancelForm={() => this.setState({ showForm: false })}
-            closeForm={(experience) =>
+            closeForm={(experience, bol) =>
               this.setState({
                 showForm: false,
                 newExperience: experience,
                 editExperience: {},
+                delValue: bol,
               })
             }
           />

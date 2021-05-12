@@ -10,6 +10,7 @@ import SmsRoundedIcon from "@material-ui/icons/SmsRounded";
 import NotificationsRoundedIcon from "@material-ui/icons/NotificationsRounded";
 import WorkRoundedIcon from "@material-ui/icons/WorkRounded";
 import PersonRoundedIcon from "@material-ui/icons/PersonRounded";
+import { Link, withRouter } from "react-router-dom";
 
 import {
   Navbar,
@@ -43,7 +44,13 @@ class MyNav extends Component {
             alignItems: "center",
           }}
         >
-          <LinkedInIcon style={{ color: "rgb(10,102,194)", fontSize: 50 }} />
+          <Link to="/feed">
+            <div>
+              <LinkedInIcon
+                style={{ color: "rgb(10,102,194)", fontSize: 50 }}
+              />
+            </div>
+          </Link>
           <InputGroup>
             <InputGroup.Prepend>
               <InputGroup.Text
@@ -138,9 +145,11 @@ class MyNav extends Component {
               className="my-auto"
               title={
                 <>
-                  <div>
-                    <PersonRoundedIcon style={{ fontSize: 28 }} />
-                  </div>
+                  <Link to="/">
+                    <div>
+                      <PersonRoundedIcon style={{ fontSize: 28 }} />
+                    </div>
+                  </Link>
                   <span style={{ fontSize: "0.7rem" }}>Me</span>
                 </>
               }
@@ -196,4 +205,4 @@ class MyNav extends Component {
   }
 }
 
-export default MyNav;
+export default withRouter(MyNav);
