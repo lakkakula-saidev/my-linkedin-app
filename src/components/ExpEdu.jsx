@@ -60,16 +60,49 @@ class ExperienceEducation extends React.Component {
       alert(error);
     }
   }
+
+  async putExperience(id, ediExp) {
+    const endpoint = ` https://striveschool-api.herokuapp.com/api/profile/${this.props.user_id}/experiences/${id}`;
+
+    try {
+      let response = await fetch(endpoint, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZTllNDYxOWU1ZDAwMTUxZjhmNzkiLCJpYXQiOjE2MjA2MzQwODUsImV4cCI6MTYyMTg0MzY4NX0.LVFiiWvC5hj_tkyYlnYiUZd9DafCRH7foRwmjGXSjPM",
+        },
+        body: JSON.stringify(ediExp),
+      });
+      if (response.ok) {
+        console.log("Your Data is Sucessfully changed!!!");
+      }
+    } catch (error) {
+      alert(error);
+    }
+  }
+
   componentDidMount() {
     this.loadExperience(this.props.user_id);
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  async componentDidUpdate(prevProps, prevState) {
     console.log(this.state.newExperience);
     if (prevState.newExperience !== this.state.newExperience) {
-      this.postExperience(this.state.newExperience);
+      if (prevState.editExperience !== {}) {
+        await this.putExperience(
+          prevState.editExperience._id,
+          this.state.newExperience
+        );
+        await this.loadExperience(this.props.user_id);
+      } else {
+        this.postExperience(this.state.newExperience);
+        this.loadExperience(this.props.user_id);
+      }
+    } /* else if (prevState.editExperience !== {}) {
+      this.putExperience(prevState.editExperience);
       this.loadExperience(this.props.user_id);
-    }
+    } */
   }
 
   /*  postData(newExp) {
@@ -95,7 +128,9 @@ class ExperienceEducation extends React.Component {
 
             <div
               className="editExp"
-              onClick={() => this.setState({ showForm: true })}
+              onClick={() =>
+                this.setState({ showForm: true, editExperience: {} })
+              }
             >
               <AddIcon />
             </div>
@@ -137,10 +172,12 @@ class ExperienceEducation extends React.Component {
             user_id={this.state.user_id}
             show={this.state.showForm}
             cancelForm={() => this.setState({ showForm: false })}
-            closeForm={
-              (experience) =>
-                this.setState({ showForm: false, newExperience: experience })
-              /* this.setState({ showForm: false, newExperience: experience } )*/
+            closeForm={(experience) =>
+              this.setState({
+                showForm: false,
+                newExperience: experience,
+                editExperience: {},
+              })
             }
           />
         </Row>

@@ -20,18 +20,32 @@ class ExpForm extends Component {
       description: "",
     },
   };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.editExperience !== this.props.editExperience) {
+      this.setState({ experience: this.props.editExperience });
+    }
+  }
+
   render() {
+    {
+      console.log(this.props.editExperience);
+    }
     return (
       <>
         <Modal
           show={this.props.show}
-          onHide={this.props.closeFunc}
+          onHide={this.props.cancelForm}
           size="lg"
           scrollable={true}
           style={{ height: "100vh" }}
         >
           <Modal.Header>
-            <Modal.Title>Add Experience</Modal.Title>
+            <Modal.Title>
+              {Object.keys(this.props.editExperience).length === 0
+                ? "Add Experience"
+                : "Edit Experience"}
+            </Modal.Title>
             <div
               className="ml-auto m-0 p-0"
               onClick={this.props.closeFunc}
@@ -250,7 +264,7 @@ class ExpForm extends Component {
               Supported formats
             </span>
           </Modal.Body>
-          <Modal.Footer className="d-flex">
+          <Modal.Footer className="d-flex justify-content-between">
             <button
               style={{
                 color: "white",
@@ -271,5 +285,4 @@ class ExpForm extends Component {
     );
   }
 }
-
 export default ExpForm;
