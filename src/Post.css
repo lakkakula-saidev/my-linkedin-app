@@ -30,3 +30,27 @@
 .link {
   cursor: pointer;
 }
+
+.hashBtn:hover {
+  background-color: #ceeaf6 !important;
+  border-radius: 5px;
+}
+
+.refresh {
+  color: #0df4a4;
+  cursor: pointer;
+}
+.refresh:active {
+  animation-name: turn;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+
+@keyframes turn {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
