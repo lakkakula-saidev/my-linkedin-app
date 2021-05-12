@@ -10,11 +10,14 @@ import ProfilePage from "./components/ProfilePage";
 import { Container, Row, Col } from "react-bootstrap";
 import "./styles/mainBody1.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import PostSection from "./components/PostSection";
 
 function App() {
   return (
     <div>
       <MyNav />
+
       <Container className="mainContainer">
         <Row className="row">
           <Col md={8} lg={8}>
@@ -24,7 +27,9 @@ function App() {
             <RightSideBar />
           </Col>
         </Row>
+        <PostSection/>
       </Container>
+      
     </div>
   );
 }
