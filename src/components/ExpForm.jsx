@@ -48,7 +48,7 @@ class ExpForm extends Component {
             </Modal.Title>
             <div
               className="ml-auto m-0 p-0"
-              onClick={this.props.closeFunc}
+              onClick={this.props.cancelForm}
               style={{ cursor: "pointer" }}
             >
               <CloseIcon />
