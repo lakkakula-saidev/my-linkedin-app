@@ -70,7 +70,7 @@ class PostModal extends Component {
           </Modal.Header>
           <Modal.Body>
             <div className="d-flex">
-              <img className="postImg" src={"https://picsum.photos/200/300"} />
+              <img className="postImg" src={this.props.img} />
               <span
                 style={{
                   fontWeight: "600",
@@ -80,7 +80,7 @@ class PostModal extends Component {
                   left: "2rem",
                 }}
               >
-                User Name
+                {this.props.name} {this.props.surname}
                 <DropdownButton
                   id="dropdown-basic-button"
                   title={<span> {<LanguageRoundedIcon />} Anyone</span>}
@@ -99,7 +99,7 @@ class PostModal extends Component {
               </span>
             </div>
             <textarea
-              className="form-control"
+              className="form-control mt-3"
               id="exampleFormControlTextarea1"
               rows={4}
               onChange={(e) =>
@@ -154,7 +154,7 @@ class PostModal extends Component {
             )}
 
             <Button variant="primary" onClick={this.submitPost}>
-              Save Changes
+              Post
             </Button>
           </Modal.Footer>
           {console.log(this.state.post.text)}

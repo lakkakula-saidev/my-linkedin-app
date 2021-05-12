@@ -9,8 +9,32 @@ import PostModal from "./PostModal";
 class Post extends Component {
   state = {
     clicked: false,
+    imgUrl: "",
+    name: "",
+    surname: "",
   };
-
+  componentDidMount = async () => {
+    try {
+      let response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/profile/me",
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZTllNDYxOWU1ZDAwMTUxZjhmNzkiLCJpYXQiOjE2MjA2MzQwODUsImV4cCI6MTYyMTg0MzY4NX0.LVFiiWvC5hj_tkyYlnYiUZd9DafCRH7foRwmjGXSjPM",
+          },
+        }
+      );
+      if (response.ok) {
+        let data = await response.json();
+        console.log(data);
+        this.setState({ imgUrl: data.image });
+        this.setState({ name: data.name });
+        this.setState({ surname: data.surname });
+      }
+    } catch (error) {
+      alert(error);
+    }
+  };
   render() {
     return (
       <>
@@ -24,7 +48,7 @@ class Post extends Component {
             }}
             className="mt-2 mb-2"
           >
-            <img className="postImg" src={"https://picsum.photos/200/300"} />
+            <img className="postImg" src={this.state.imgUrl} />
             <button
               className="postBtn"
               onClick={() => this.setState({ clicked: true })}
@@ -80,6 +104,9 @@ class Post extends Component {
         <PostModal
           show={this.state.clicked}
           hide={() => this.setState({ clicked: false })}
+          img={this.state.imgUrl}
+          name={this.state.name}
+          surname={this.state.surname}
         />
       </>
     );
