@@ -99,7 +99,7 @@ class PostModal extends Component {
               </span>
             </div>
             <textarea
-              className="form-control"
+              className="form-control mt-3"
               id="exampleFormControlTextarea1"
               rows={4}
               onChange={(e) =>
