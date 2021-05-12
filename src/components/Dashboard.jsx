@@ -65,7 +65,7 @@ class Dashboard extends React.Component {
                             <div>
                                 <p>Keep track of your jobs, courses and articles</p>
                             </div>
-                     
+
 
                         </Col>
 
@@ -79,4 +79,4 @@ class Dashboard extends React.Component {
     }
 }
 
-export default Dashboard
+export default Dashboard 

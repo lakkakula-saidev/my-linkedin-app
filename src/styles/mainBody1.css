@@ -27,6 +27,7 @@ body {
 
 a {
   color: #0a66c2;
+  text-decoration: none;
 }
 .profileIcon {
   position: relative;
@@ -161,4 +162,8 @@ h4 {
   background-color: #ebebeb;
   color: var(--color-text-low-emphasis-shift);
   border: 1.8px solid #5e5e5e;
+}
+
+.editExp {
+  cursor: pointer;
 }
