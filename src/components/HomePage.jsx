@@ -8,9 +8,11 @@ export class HomePage extends Component {
     return (
       <Container className="mainContainer ">
         <Row>
+          <Col md={2}></Col>
           <Col md={7}>
             <Post />
           </Col>
+          <Col md={3}></Col>
         </Row>
       </Container>
     );
