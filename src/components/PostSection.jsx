@@ -88,7 +88,7 @@ class PostSection extends Component {
                   <p className="postP mar2"> {post.text}</p>
                 </Card.Text>
               </Card.Body>
-              {/* <Card.Img variant="bottom" src={} /> */}
+
             </Card>
           ))}
         </Container>
