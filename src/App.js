@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./styles/mainBody1.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ProfileBody from "./components/ProfileBody";
+import HomePage from "./components/HomePage";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           path="/"
           exact
         />
-        {/* <Route component={Feed} path="/feed" exact /> */}
+        <Route component={HomePage} path="/feed" exact />
         <Footer />
       </Router>
     </div>
