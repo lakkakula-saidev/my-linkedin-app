@@ -32,7 +32,7 @@ class MyNav extends Component {
           zIndex: 100,
           backgroundColor: "white",
         }}
-        className=" w-100 p-0"
+        className=" w-100 p-0 navbar-expand-lg"
         expand="lg"
       >
         <Container>
@@ -90,7 +90,7 @@ class MyNav extends Component {
               // style={{ marginLeft: "10rem" }}
             >
               <Nav.Link
-                className="mx-2 my-auto"
+                className="mx-xl-2 my-auto"
                 style={{
                   display: "flex",
                   flexDirection: "column",
@@ -183,7 +183,7 @@ class MyNav extends Component {
                 {" "}
               </div>
               <NavDropdown
-                className="my-auto mx-auto mx-lg-1"
+                className="my-auto mx-auto mx-md-2"
                 title={
                   <>
                     <div>
