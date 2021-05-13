@@ -5,7 +5,7 @@ import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import ExpForm from "./ExpForm";
 import "../ExpEdu.css";
 import { format, parseISO } from "date-fns";
-/* import { convertDate } from "../helpers/dates"; */
+import LOAD_API from "./LOAD_API";
 
 class ExperienceEducation extends React.Component {
   state = {
@@ -15,113 +15,31 @@ class ExperienceEducation extends React.Component {
     newExperience: false,
     editExperience: {},
     delValue: false,
+    isLoading: false,
   };
 
-  async loadExperience(id) {
-    console.log(id);
-    const endpoint = ` https://striveschool-api.herokuapp.com/api/profile/${id}/experiences`;
-
-    try {
-      let response = await fetch(endpoint, {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZTllNDYxOWU1ZDAwMTUxZjhmNzkiLCJpYXQiOjE2MjA2MzQwODUsImV4cCI6MTYyMTg0MzY4NX0.LVFiiWvC5hj_tkyYlnYiUZd9DafCRH7foRwmjGXSjPM",
-        },
-      });
-      if (response.ok) {
-        response = await response.json();
-        this.setState({
-          Experience: response,
-        });
-        this.setState({ isLoading: !this.state.isloading });
-        console.log(this.state.Experience);
-      }
-    } catch (error) {
-    } finally {
-    }
-  }
-
-  async postExperience(newExp) {
-    const endpoint = ` https://striveschool-api.herokuapp.com/api/profile/${this.props.user_id}/experiences`;
-
-    try {
-      let response = await fetch(endpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZTllNDYxOWU1ZDAwMTUxZjhmNzkiLCJpYXQiOjE2MjA2MzQwODUsImV4cCI6MTYyMTg0MzY4NX0.LVFiiWvC5hj_tkyYlnYiUZd9DafCRH7foRwmjGXSjPM",
-        },
-        body: JSON.stringify(newExp),
-      });
-      if (response.ok) {
-        console.log("Your Data is Sucessfully Posted");
-      }
-    } catch (error) {
-      alert(error);
-    }
-  }
-
-  async putExperience(id, ediExp, method) {
-    const endpoint = ` https://striveschool-api.herokuapp.com/api/profile/${this.props.user_id}/experiences/${id}`;
-
-    try {
-      let response = await fetch(endpoint, {
-        method: method,
-        headers: {
-          "Content-Type": "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZTllNDYxOWU1ZDAwMTUxZjhmNzkiLCJpYXQiOjE2MjA2MzQwODUsImV4cCI6MTYyMTg0MzY4NX0.LVFiiWvC5hj_tkyYlnYiUZd9DafCRH7foRwmjGXSjPM",
-        },
-        body: JSON.stringify(ediExp),
-      });
-      if (response.ok) {
-        console.log("Your Data is Sucessfully changed!!!");
-      }
-    } catch (error) {
-      alert(error);
-    }
-  }
-
-  componentDidMount() {
-    this.loadExperience(this.props.user_id);
+  async componentDidMount() {
+    const [data, loadBool] = await LOAD_API(
+      this.props.user_id,
+      "profile",
+      "experiences"
+    );
+    this.setState({ Experience: data, isLoading: loadBool });
   }
 
   async componentDidUpdate(prevProps, prevState) {
-    console.log(this.state.newExperience);
-    if (prevState.newExperience !== this.state.newExperience) {
-      if (this.state.delValue === true) {
-        await this.putExperience(
-          prevState.editExperience._id,
-          this.state.newExperience,
-          "DELETE"
-        );
-        await this.loadExperience(this.props.user_id);
-        await this.setState({ delValue: false });
-      } else if (prevState.editExperience !== {}) {
-        console.log();
-        await this.putExperience(
-          prevState.editExperience._id,
-          this.state.newExperience,
-          "PUT"
-        );
-        await this.loadExperience(this.props.user_id);
-      } else {
-        this.postExperience(this.state.newExperience);
-        this.loadExperience(this.props.user_id);
-      }
-    } /* else if (prevState.editExperience !== {}) {
-      this.putExperience(prevState.editExperience);
-      this.loadExperience(this.props.user_id);
-    } */
+    if (prevState.showForm !== this.state.showForm) {
+      /* console.log("this function is invoked"); */
+      const [data, loadBool] = await LOAD_API(
+        this.props.user_id,
+        "profile",
+        "experiences"
+      );
+      this.setState({ Experience: data, isLoading: loadBool });
+      console.log(this.state.Experience);
+    }
   }
 
-  /*  postData(newExp) {
-    console.log(newExp);
-
-    this.setState({ showForm: false, newExperience: newExp });
-  }
- */
   render() {
     return (
       <>
@@ -180,15 +98,14 @@ class ExperienceEducation extends React.Component {
           <hr></hr>
           <ExpForm
             editExperience={this.state.editExperience}
+            isClosed={this.state.isClosed}
             user_id={this.state.user_id}
             show={this.state.showForm}
             cancelForm={() => this.setState({ showForm: false })}
-            closeForm={(experience, bol) =>
+            closeForm={(bol) =>
               this.setState({
                 showForm: false,
-                newExperience: experience,
-                editExperience: {},
-                delValue: bol,
+                isClosed: true,
               })
             }
           />
@@ -224,3 +141,51 @@ export default ExperienceEducation;
                         </div>
                     </div> */
 }
+
+/* console.log(this.state.newExperience); */
+/*     async componentDidUpdate(prevProps, prevState) {
+    if (prevState.newExperience !== this.state.newExperience) {
+      if (this.state.delValue === true) {
+        console.log("delete");
+        await this.putExperience(
+          prevState.editExperience._id,
+          this.state.newExperience,
+          "DELETE"
+        );
+        DELETE_API(
+          this.state.newExperience,
+          user_id,
+          prevState.editExperience._id,
+          "profile",
+          "experience"
+        );
+
+        await this.loadExperience(this.props.user_id);
+        await this.setState({ delValue: false });
+      } else if (prevState.editExperience !== {}) {
+        console.log("put");
+
+        await this.putExperience(
+          prevState.editExperience._id,
+          this.state.newExperience,
+          "PUT"
+        );
+        await this.loadExperience(this.props.user_id);
+      } else {
+        console.log("post");
+        POST_API(
+          this.state.newExperience,
+          this.props.user_id,
+          "profile",
+          "experiences"
+        );
+
+        this.loadExperience(this.props.user_id);
+      }
+    } 
+  } */
+
+/* else if (prevState.editExperience !== {}) {
+      this.putExperience(prevState.editExperience);
+      this.loadExperience(this.props.user_id);
+    } */

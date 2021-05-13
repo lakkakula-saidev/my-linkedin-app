@@ -2,11 +2,23 @@ import { Component } from "react";
 import { Button, Modal, Row } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CloseIcon from "@material-ui/icons/Close";
-import ModalDialog from "react-bootstrap/ModalDialog";
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import "../ExpEdu.css";
+import POST_API from "./POST_API";
+
+const initialState = {
+  checked: false,
+  experience: {
+    role: "",
+    company: "",
+    area: "",
+    startDate: "",
+    endDate: "",
+    description: "",
+  },
+};
 
 class ExpForm extends Component {
   state = {
@@ -19,7 +31,24 @@ class ExpForm extends Component {
       endDate: "",
       description: "",
     },
+    isClosed: false,
   };
+
+  async addExperience() {
+    console.log("this is working");
+    await POST_API(
+      this.state.experience,
+      this.props.user_id,
+      "profile",
+      "experiences"
+    );
+
+    await this.props.closeForm(false);
+  }
+
+  componentDidMount(prevProps, prevState) {
+    this.setState({ experience: this.props.editExperience });
+  }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.editExperience !== this.props.editExperience) {
@@ -296,7 +325,7 @@ class ExpForm extends Component {
                 minHeight: "2rem",
               }}
               ClassName="ml-auto"
-              onClick={() => this.props.closeForm(this.state.experience, false)}
+              onClick={() => this.addExperience()}
             >
               Save
             </button>
