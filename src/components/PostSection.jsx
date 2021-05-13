@@ -7,6 +7,8 @@ import {
   Button,
   Table,
   Figure,
+  Dropdown,
+  
 } from "react-bootstrap";
 import pic from "../leoAssets/ciao.jpg";
 import "../styleLeo.css";
@@ -61,7 +63,9 @@ class PostSection extends Component {
     let cdate = (new Date(cts)).toString();
     return (
       <>
+
         <Container>
+
           {this.state.reservations.slice(0, 8).map((post) => (
             <Card className="padder"key={post.id}>
               <Card.Body>
