@@ -81,7 +81,7 @@ class PostSection extends Component {
                     <div className="grey">{post.user.title}</div>
                     <p className="grey">{post.createdAt} • <BiWorld/> </p> 
                     </div>
-                    <div className="left-elementA"><h2><BiDotsHorizontalRounded/></h2></div>
+                    <div className="foo"><h2><BiDotsHorizontalRounded/></h2></div>
                    
                   </div>
                  
