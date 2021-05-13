@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Button, Modal, Row } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CloseIcon from "@material-ui/icons/Close";
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
@@ -7,6 +7,7 @@ import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import "../ExpEdu.css";
 import POST_API from "./POST_API";
+import DELETE_API from "./DELETE_API";
 
 const initialState = {
   checked: false,
@@ -34,7 +35,7 @@ class ExpForm extends Component {
     isClosed: false,
   };
 
-  async addExperience() {
+  async addExp() {
     console.log("this is working");
     await POST_API(
       this.state.experience,
@@ -43,6 +44,30 @@ class ExpForm extends Component {
       "experiences"
     );
 
+    await this.props.closeForm(false);
+  }
+
+  async delExp() {
+    console.log("this is working");
+    await DELETE_API(
+      this.state.experience,
+      this.props.user_id,
+      this.state.experience._id,
+      "profile",
+      "experiences"
+    );
+    await this.props.closeForm(false);
+  }
+
+  async putExp() {
+    console.log("this is working");
+    await DELETE_API(
+      this.state.experience,
+      this.props.user_id,
+      this.state.experience._id,
+      "profile",
+      "experiences"
+    );
     await this.props.closeForm(false);
   }
 
@@ -79,6 +104,7 @@ class ExpForm extends Component {
               className="ml-auto m-0 p-0"
               onClick={this.props.closeFunc}
               style={{ cursor: "pointer" }}
+              onClick={() => this.props.closeForm(false)}
             >
               <CloseIcon />
             </div>
@@ -213,7 +239,11 @@ class ExpForm extends Component {
                   id="startDate"
                   className="mx-3"
                   required
-                  value={this.state.experience.startDate}
+                  value={
+                    Object.keys(this.props.editExperience).length !== 0
+                      ? this.props.editExperience.startDate.split("T")[0]
+                      : this.state.experience.startDate
+                  }
                   onChange={(e) =>
                     this.setState({
                       experience: {
@@ -223,6 +253,7 @@ class ExpForm extends Component {
                     })
                   }
                 />
+                bj["key"] !== undefined
                 {!this.state.experience.startDate && (
                   <p className="invalid mt-3">Please enter a start date.</p>
                 )}
@@ -235,7 +266,11 @@ class ExpForm extends Component {
                     type="date"
                     id="startDate"
                     className="mx-3"
-                    value={this.state.experience.endDate}
+                    value={
+                      Object.keys(this.props.editExperience).length !== 0
+                        ? this.props.editExperience.endDate.split("T")[0]
+                        : this.state.experience.endDate
+                    }
                     onChange={(e) =>
                       this.setState({
                         experience: {
@@ -305,9 +340,7 @@ class ExpForm extends Component {
                   minHeight: "2rem",
                 }}
                 ClassName="ml-auto"
-                onClick={() =>
-                  this.props.closeForm(this.state.experience, true)
-                }
+                onClick={() => this.delExp()}
               >
                 Delete
               </button>
@@ -325,7 +358,11 @@ class ExpForm extends Component {
                 minHeight: "2rem",
               }}
               ClassName="ml-auto"
-              onClick={() => this.addExperience()}
+              onClick={() =>
+                Object.keys(this.props.editExperience).length !== 0
+                  ? this.putExp()
+                  : this.addExp()
+              }
             >
               Save
             </button>

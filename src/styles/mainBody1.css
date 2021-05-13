@@ -80,15 +80,25 @@ h4 {
   font-weight: 400;
 }
 .jumboRow-col1 {
-  flex: 0 0 75%;
+  flex: 0 0 70%;
 }
 .jumboRow-col1 p {
   margin-bottom: 0px;
 }
 .jumboRow-col2 {
   display: flex;
-  flex: 0 0 25%;
+  flex: 0 0 30%;
   justify-content: flex-end;
+}
+
+.currentRole {
+  margin-bottom: 0;
+  margin-left: 2px;
+}
+
+.jumboRow-col2 > div {
+  display: flex;
+  justify-content: space-between;
 }
 
 #description {
@@ -137,12 +147,15 @@ h4 {
 }
 .btn-primary {
   border-radius: 50px;
-  background-color: #f3f2ef;
+  background-color: white;
   color: var(--color-text-low-emphasis-shift);
   border: 1.8px solid rgb(170, 170, 170);
   padding-left: 1.4rem !important;
   padding-right: 1.4rem !important;
   line-height: 1rem !important;
+}
+.btn-primary:hover {
+  background-color: #f3f2ef;
 }
 
 .infoRow > ul > li:first-of-type button {
@@ -163,7 +176,22 @@ h4 {
   color: var(--color-text-low-emphasis-shift);
   border: 1.8px solid #5e5e5e;
 }
+.addExp {
+  cursor: pointer;
+}
 
 .editExp {
   cursor: pointer;
+  display: none;
+}
+.expClass h6 {
+  margin-bottom: 0px;
+}
+
+.workCompany {
+  font-size: 14px;
+}
+
+.divExp:hover .editExp {
+  display: block;
 }

@@ -1,18 +1,7 @@
 import { Component } from "react";
-import {
-  Col,
-  Row,
-  Container,
-  Card,
-  Button,
-  Table,
-  Figure,
-} from "react-bootstrap";
-import pic from "../leoAssets/ciao.jpg";
+import { Card } from "react-bootstrap";
 import "../styleLeo.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import HelpIcon from "@material-ui/icons/Help";
-import LanguageIcon from "@material-ui/icons/Language";
 import { BiWorld, BiDotsHorizontalRounded } from "react-icons/bi";
 import React from "react";
 import { format, parseISO } from "date-fns";

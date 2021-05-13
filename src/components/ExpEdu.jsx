@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import AddIcon from "@material-ui/icons/Add";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import ExpForm from "./ExpForm";
@@ -56,7 +56,7 @@ class ExperienceEducation extends React.Component {
             <h6>Experience</h6>
 
             <div
-              className="editExp"
+              className="addExp"
               onClick={() =>
                 this.setState({ showForm: true, editExperience: {} })
               }
@@ -65,17 +65,17 @@ class ExperienceEducation extends React.Component {
             </div>
           </div>
           {this.state.Experience.map((item) => (
-            <div className="d-flex mb-3 justify-content-between">
+            <div className="d-flex mb-3 justify-content-between divExp">
               <div className="d-flex justify-content-between">
                 <img
                   src="https://www.vouchercodes.co.uk/static/v10/images/merchant/logo/128px/825_180920143441.png"
                   style={{ width: "75px", height: "75px" }}
                 ></img>
-                <div className="ml-3">
+                <div className="d-flex flex-column ml-3 expClass">
                   <h6>{item.role}</h6>
-                  <p>{item.company}</p>
+                  <p className="workCompany">{item.company}</p>
                   <span>
-                    {format(parseISO(item.startDate), "yyyy-MMM-dd")} {" - "}
+                    {format(parseISO(item.startDate), "yyyy-MMM-dd")} {"to "}
                     {item.endData !== ""
                       ? format(parseISO(item.endDate), "yyyy-MMM-dd")
                       : "present"}
@@ -189,3 +189,13 @@ export default ExperienceEducation;
       this.putExperience(prevState.editExperience);
       this.loadExperience(this.props.user_id);
     } */
+
+/* {
+  format(parseISO(item.startDate), "yyyy-MMM-dd");
+}
+}
+{
+  item.endData !== ""
+    ? format(parseISO(item.endDate), "yyyy-MMM-dd")
+    : "present";
+} */

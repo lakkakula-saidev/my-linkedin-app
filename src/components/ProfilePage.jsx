@@ -7,7 +7,7 @@ import Featured from "./Featured";
 import Dashboard from "./Dashboard";
 import ExpEdu from "./ExpEdu";
 import Activity from "./Activity";
-
+import { withRouter, Link } from "react-router-dom";
 import LanguageOutlinedIcon from "@material-ui/icons/LanguageOutlined";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 
@@ -68,11 +68,22 @@ export default class MainBody1 extends Component {
                     <EditOutlinedIcon />
                   </div>
                 </div>
-                <Col className="jumboRow-col1">
+                <div className="d-flex justify-content-between">
                   <h2>
-                    {this.state.profileData.name}{" "}
+                    {this.state.profileData.name}
                     {this.state.profileData.surname}
                   </h2>
+                  <div className="d-flex justify-content-between align-items-center">
+                    <div>
+                      <LanguageOutlinedIcon />
+                    </div>
+                    <h6 className="currentRole">
+                      {this.state.profileData.title}
+                    </h6>
+                  </div>
+                </div>
+
+                <Col className="jumboRow-col1">
                   <p id="description">
                     {this.state.profileData.bio}. Lorem ipsum dolor sit amet
                     consectetur adipisicing elit. Iure molestiae repellat
@@ -155,11 +166,7 @@ export default class MainBody1 extends Component {
                   </Row>
                 </Col>
 
-                <Col className="jumboRow-col2 ">
-                  <h6 className="display-block block-inline">
-                    <LanguageOutlinedIcon /> {this.state.profileData.title}
-                  </h6>
-                </Col>
+                <Col className="jumboRow-col2 "></Col>
               </Row>
             </Jumbotron>
             <About />
