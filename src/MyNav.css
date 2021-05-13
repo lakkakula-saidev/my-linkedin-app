@@ -7,11 +7,33 @@ p {
 }
 
 .search {
-  max-width: 15rem;
+  min-width: 10rem;
+  max-width: 10rem;
+  position: relative;
+  left: 3rem;
+  background-color: rgb(238, 243, 248);
+  transition: 0.2s !important;
+}
+.search:focus {
+  min-width: 15rem;
+  max-width: 17rem;
+  box-shadow: none !important;
+
+  background-color: rgb(238, 243, 248) !important;
+  border: 1px solid #ced4da !important;
 }
 .redLink {
   color: rgb(173, 89, 7);
 }
 .redLink:hover {
   text-decoration: underline;
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  flex-wrap: wrap;
 }
