@@ -77,7 +77,6 @@ class PostSection extends Component {
                 <Card.Body>
                   <Card.Text>
                     <div className="sizer">
-                      {" "}
                       <div>
                         <img
                           src={post.user.image}
@@ -94,14 +93,14 @@ class PostSection extends Component {
                         <h6 className="grey">• Following</h6>
                         <div className="grey">{post.user.title}</div>
                         <p className="grey">
-                          {post.createdAt} • <BiWorld />{" "}
+                          {post.createdAt.split("T")[0]} • <BiWorld />{" "}
                         </p>
                       </div>
-                      <div className="left-elementA">
+                      {/*  <div className="left-elementA">
                         <h2>
                           <BiDotsHorizontalRounded />
                         </h2>
-                      </div>
+                      </div> */}
                       <div className="foo">
                         <h2>
                           <BiDotsHorizontalRounded />

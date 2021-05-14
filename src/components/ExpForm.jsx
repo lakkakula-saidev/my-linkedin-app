@@ -11,18 +11,6 @@ import DELETE_API from "./DELETE_API";
 import PUT_API from "./PUT_API";
 import ValidateModal from "./ValidateModal";
 
-const initialState = {
-  checked: false,
-  experience: {
-    role: "",
-    company: "",
-    area: "",
-    startDate: "",
-    endDate: "",
-    description: "",
-  },
-};
-
 class ExpForm extends Component {
   state = {
     checked: false,
@@ -34,7 +22,9 @@ class ExpForm extends Component {
       endDate: "",
       description: "",
     },
-    isClosed: false,
+    isClass: false,
+    postCss1: "postbtn1 ",
+    postCss2: "postbtn2 ",
   };
 
   async addExp() {
@@ -94,10 +84,11 @@ class ExpForm extends Component {
   }
 
   componentDidMount(prevProps, prevState) {
-    this.setState({ experience: this.props.editExperience });
+    this.setState({ experience: this.props.emptyExperience });
   }
 
   componentDidUpdate(prevProps, prevState) {
+    console.log(this.state.experience);
     if (
       Object.keys(prevProps.editExperience).length !== 0 &&
       Object.keys(this.props.editExperience).length === 0
@@ -384,7 +375,10 @@ class ExpForm extends Component {
                 minWidth: "4rem",
                 minHeight: "2rem",
               }}
-              ClassName="ml-auto"
+              /* ClassName="ml-auto" */
+              className={
+                ValidateModal(this.state.experience) ? "postbtn2 " : "postbtn1 "
+              }
               onClick={() =>
                 Object.keys(this.props.editExperience).length !== 0
                   ? this.putExp()
