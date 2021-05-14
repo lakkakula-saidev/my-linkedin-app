@@ -171,6 +171,9 @@ button {
     padding-right: 1.4rem !important;
     line-height: 1rem !important;
 }
+.bootstra-select .btn:focus{
+    outline: none !important;
+}
 
 .btn-check:active+.btn-primary:focus, .btn-check:checked+.btn-primary:focus, .btn-primary.active:focus, .btn-primary:active:focus, .show>.btn-primary.dropdown-toggle:focus {
     box-shadow: none;
