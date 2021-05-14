@@ -33,6 +33,8 @@ class PostModal extends Component {
     image: "",
     refresh: "refresh",
     clickRefresh: false,
+    imgUp: "",
+    imgShow: false,
   };
 
   refreshBtn = () => {
@@ -92,6 +94,8 @@ class PostModal extends Component {
             );
 
             if (res.ok) {
+              let file = await res.json();
+              this.setState({ imgUp: file.image });
               this.setState({ isLoading: false });
               alert("Your Post has been saved!!");
             } else {
@@ -228,6 +232,32 @@ class PostModal extends Component {
                 <em>While uploading you cant Post anything new</em>{" "}
               </p>
               <Spinner animation="border" variant="primary" />
+            </div>
+          )}
+
+          {this.state.imgUp && (
+            <div style={{ display: "flex", flexDirection: "row" }}>
+              <button
+                onClick={() =>
+                  this.state.imgShow
+                    ? this.setState({ imgShow: false })
+                    : this.setState({ imgShow: true })
+                }
+                style={{
+                  border: "none",
+                  borderRadius: "5rem",
+                  maxWidth: "90%",
+                }}
+                className="postbtn1 mx-auto"
+              >
+                Press to show/hide your image!
+              </button>
+              {this.state.imgShow && (
+                <img
+                  style={{ maxHeight: "15rem", maxWidth: "15rem" }}
+                  src={this.state.imgUp}
+                />
+              )}
             </div>
           )}
           <div
