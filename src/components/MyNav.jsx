@@ -32,7 +32,7 @@ class MyNav extends Component {
           zIndex: 100,
           backgroundColor: "white",
         }}
-        className=" w-100 p-0 navbar-expand-lg"
+        className=" w-100 py-0 navbar-expand-lg"
         expand="lg"
       >
         <Container>
