@@ -80,8 +80,12 @@ class RightSideBar extends Component {
             </Col>
           </div>
 
-          <Col style={{ backgroundColor: "white" }} className="upperP   backG">
-            <Card className=" imageProfile" style={{ width: "14rem" }}>
+          <Col
+            
+            style={{ backgroundColor: "white" }}
+            className="upperP   backG"
+          >
+            <Card className=" imageProfile" style={{ width: "auto"},{paddingRight:"5px"}}>
               <Card.Img variant="top" src={pic} />
             </Card>
           </Col>
