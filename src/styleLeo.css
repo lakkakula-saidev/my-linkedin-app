@@ -154,3 +154,11 @@ margin-bottom:15px;
     display: inline-block;
     float: left;
 }
+
+.foo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-right: 10px;
+    color:grey
+  }
