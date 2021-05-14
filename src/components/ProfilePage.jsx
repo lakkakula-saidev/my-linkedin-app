@@ -130,7 +130,7 @@ export default class MainBody1 extends Component {
                       <li>
                         <div>
                           <DropdownButton
-                            id="dropdown-basic-button"
+                            id="profileButtons"
                             title="Add profile section"
                           >
                             <Dropdown.Item href="#/action-1">
@@ -147,10 +147,7 @@ export default class MainBody1 extends Component {
                       </li>
                       <li>
                         <div>
-                          <DropdownButton
-                            id="dropdown-basic-button"
-                            title="More.."
-                          >
+                          <DropdownButton id="profileButtons" title="More..">
                             <Dropdown.Item href="#/action-1">
                               Action
                             </Dropdown.Item>
