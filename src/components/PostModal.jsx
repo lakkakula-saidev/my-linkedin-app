@@ -8,9 +8,15 @@ import {
   Spinner,
 } from "react-bootstrap";
 import CloseIcon from "@material-ui/icons/Close";
+import PhotoSizeSelectActualOutlinedIcon from "@material-ui/icons/PhotoSizeSelectActualOutlined";
+import PlayArrowOutlinedIcon from "@material-ui/icons/PlayArrowOutlined";
+import AssignmentRoundedIcon from "@material-ui/icons/AssignmentRounded";
 import "bootstrap/dist/css/bootstrap.min.css";
 import LanguageRoundedIcon from "@material-ui/icons/LanguageRounded";
 import RefreshRoundedIcon from "@material-ui/icons/RefreshRounded";
+import DescriptionIcon from "@material-ui/icons/Description";
+import AddIcon from "@material-ui/icons/Add";
+import MessageIcon from "@material-ui/icons/Message";
 
 class PostModal extends Component {
   state = {
@@ -18,6 +24,11 @@ class PostModal extends Component {
       text: "",
     },
     isLoading: false,
+    postCss1: "postbtn1 ",
+    postCss2: "postbtn2 ",
+    plusIcon: true,
+    putCursor: () =>
+      document.getElementById("exampleFormControlTextarea1").focus(),
   };
 
   submitPost = async () => {
@@ -41,7 +52,7 @@ class PostModal extends Component {
         this.setState({ post: { text: "" } });
         this.setState({ isLoading: false });
       } else {
-        alert("Something happened :/");
+        alert("Something happened :/", response.status);
         this.setState({ isLoading: false });
       }
     } catch (error) {
@@ -145,18 +156,121 @@ class PostModal extends Component {
               />
             </span>
           </Modal.Body>
-          <Modal.Footer>
-            {/* <Button variant="secondary" onClick={this.props.hide}>
-              Close
-            </Button> */}
-            {this.state.isLoading && (
-              <Spinner animation="border" variant="primary" />
-            )}
-
-            <Button variant="primary" onClick={this.submitPost}>
+          {this.state.isLoading && (
+            <Spinner animation="border" variant="primary" />
+          )}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              flexWrap: "nowrap",
+              alignItems: "center",
+            }}
+          >
+            <div
+              onClick={
+                this.state.plusIcon
+                  ? () => this.setState({ plusIcon: false })
+                  : () => this.setState({ plusIcon: true })
+              }
+            >
+              <AddIcon
+                style={{
+                  color: "rgb(10,102,194)",
+                  fonstSize: "5rem",
+                  marginLeft: "1.5rem",
+                  cursor: "pointer",
+                }}
+              />
+            </div>
+            <PhotoSizeSelectActualOutlinedIcon
+              style={{ color: "rgb(102,102,102)", marginLeft: "1rem" }}
+            />
+            <PlayArrowOutlinedIcon
+              style={{
+                color: "white",
+                backgroundColor: "rgb(102,102,102)",
+                borderRadius: "5px",
+                fontSize: "1.2rem",
+                marginLeft: "1rem",
+              }}
+            />
+            <DescriptionIcon
+              style={{ color: "rgb(102,102,102)", marginLeft: "1rem" }}
+            />
+            <div
+              className="br  "
+              style={{ height: "1.5rem", marginLeft: "1rem" }}
+            >
+              {" "}
+            </div>
+            <MessageIcon
+              style={{
+                color: "rgb(102,102,102)",
+                marginLeft: "1.5rem",
+                marginRight: "0.5rem",
+              }}
+            />
+            <span className="d-none d-sm-inline-block">Anyone</span>
+            <button
+              className={
+                this.state.post.text ? this.state.postCss1 : this.state.postCss2
+              }
+              style={{ marginLeft: "auto" }}
+              onClick={this.submitPost}
+              disabled={this.state.post.text ? false : true}
+            >
               Post
-            </Button>
-          </Modal.Footer>
+            </button>
+          </div>
+          {this.state.plusIcon && (
+            <Modal.Footer style={{ backgroundColor: "rgb(243,242,239)" }}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  width: "100%",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-around",
+                  }}
+                >
+                  <div className="footerDiv" style={{ marginRight: "1rem" }}>
+                    Celebrate an occasion{" "}
+                  </div>
+                  <div className="footerDiv">Share that you're hiring </div>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <div className="footerDiv" style={{ marginRight: "1rem" }}>
+                    Find an expert{" "}
+                  </div>
+                  <div className="footerDiv">Create a poll</div>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-around",
+                  }}
+                >
+                  <div className="footerDiv" style={{ marginRight: "auto" }}>
+                    Offer help
+                  </div>
+                </div>
+              </div>
+            </Modal.Footer>
+          )}
+
           {console.log(this.state.post.text)}
         </Modal>
       </>

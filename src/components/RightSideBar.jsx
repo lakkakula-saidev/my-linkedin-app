@@ -96,7 +96,7 @@ class RightSideBar extends Component {
                 <div className="justify-content-start  ">
                   {" "}
                   <Figure.Caption className="right borderR ">
-                    <p className="boldness">{user.name} 3°+</p>
+                    <p className="boldness">{user.name}{" "}{user.username} 3°+</p>
                     <p>{user.title}</p>
                     <Button className="borderR" variant="outline-secondary">
                       Connect
@@ -121,7 +121,7 @@ class RightSideBar extends Component {
                 <div className="justify-content-start  ">
                   {" "}
                   <Figure.Caption className="right borderR ">
-                    <p className="boldness">{user.name} 3°+</p>
+                    <p className="boldness">{user.name}{" "}{user.username} 3°+</p>
                     <p>{user.title}</p>
                     <Button className="borderR" variant="outline-secondary">
                       Connect

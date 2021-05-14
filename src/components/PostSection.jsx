@@ -1,7 +1,19 @@
 import { Component } from "react";
-import { Card } from "react-bootstrap";
+import {
+  Col,
+  Row,
+  Container,
+  Card,
+  Button,
+  Table,
+  Figure,
+  Dropdown,
+} from "react-bootstrap";
+import pic from "../leoAssets/ciao.jpg";
 import "../styleLeo.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import HelpIcon from "@material-ui/icons/Help";
+import LanguageIcon from "@material-ui/icons/Language";
 import { BiWorld, BiDotsHorizontalRounded } from "react-icons/bi";
 import React from "react";
 import { format, parseISO } from "date-fns";
@@ -82,11 +94,15 @@ class PostSection extends Component {
                         <h6 className="grey">• Following</h6>
                         <div className="grey">{post.user.title}</div>
                         <p className="grey">
-                          {format(parseISO(post.createdAt), "yyyy-MMM-dd")} •{" "}
-                          <BiWorld />{" "}
+                          {post.createdAt} • <BiWorld />{" "}
                         </p>
                       </div>
                       <div className="left-elementA">
+                        <h2>
+                          <BiDotsHorizontalRounded />
+                        </h2>
+                      </div>
+                      <div className="foo">
                         <h2>
                           <BiDotsHorizontalRounded />
                         </h2>

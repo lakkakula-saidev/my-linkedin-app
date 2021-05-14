@@ -24,6 +24,14 @@
   border-radius: 5rem;
   border: 1px solid grey;
 }
+.postBtn1 {
+  height: 48px;
+  font-size: 0.9rem;
+  min-width: 80%;
+  background-color: white;
+  border-radius: 5rem;
+  border: 1px solid grey;
+}
 .postBtn:hover {
   background-color: #d8dcde;
 }
@@ -53,4 +61,51 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.postbtn1 {
+  border-radius: 5rem;
+  min-width: 5rem;
+  border: none;
+  min-height: 2rem;
+  background-color: rgb(10, 102, 194);
+  color: white;
+  font-weight: 500;
+}
+
+.postbtn1:hover {
+  border-radius: 5rem;
+  min-width: 5rem;
+  min-height: 2rem;
+  border: none;
+  background-color: rgb(10, 102, 194);
+  color: white;
+  font-weight: 500;
+}
+
+.postbtn2 {
+  border-radius: 5rem;
+  min-height: 2rem;
+  min-width: 5rem;
+  background-color: rgb(235, 235, 235);
+  color: rgb(177, 177, 177);
+  cursor: not-allowed;
+  border: none;
+}
+.postbtn2.disabled:hover {
+  cursor: not-allowed;
+  border-radius: 5px;
+}
+
+.footerDiv {
+  color: rgb(143, 143, 143);
+  background-color: white;
+  border-radius: 5rem;
+  border: none;
+  padding: 0.3rem 2rem 0.3rem 2rem;
+  margin-top: 1rem;
+}
+.footerDiv:hover {
+  background-color: rgb(224, 223, 220);
+  cursor: pointer;
 }
