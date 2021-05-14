@@ -97,16 +97,45 @@ class PostSection extends Component {
                           {post.createdAt} • <BiWorld />{" "}
                         </p>
                       </div>
-                      <div className="left-elementA">
-                        <h2>
-                          <BiDotsHorizontalRounded />
-                        </h2>
-                      </div>
+                     
                       <div className="foo">
-                        <h2>
-                          <BiDotsHorizontalRounded />
-                        </h2>
-                      </div>
+                      <Dropdown>
+                        <Dropdown.Toggle id="dropdown-basic">
+                          <h1><BiDotsHorizontalRounded /></h1>
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                          <Dropdown.Item href="#/action-1">
+                            <p className="boldness fonty">Save</p> 
+                          </Dropdown.Item>
+                          <Dropdown.Item href="#/action-2">
+                          <p className="boldness fonty">Copy link to post</p>
+                          </Dropdown.Item>
+                          <Dropdown.Item href="#/action-3">
+                          <p className="boldness fonty">Embed this post</p>   
+                          </Dropdown.Item>
+                          <Dropdown.Item href="#/action-3">
+                          <p className="boldness fonty">Unfollow {post.user.name}{" "}{post.user.surname}</p>   
+                          </Dropdown.Item>
+                          <Dropdown.Item href="#/action-3">
+                          <p className="boldness fonty"> I don't want to see this post {post.user.name}{" "}{post.user.surname}</p>    
+                          </Dropdown.Item>
+                          <Dropdown.Item href="#/action-3">
+                          <p className="boldness fonty"> Report this post</p>
+                          </Dropdown.Item>
+                          <Dropdown.Item href="#/action-3">
+                          <p className="boldness fonty"> Who can see this post</p> 
+                         </Dropdown.Item>
+                         {post.user._id === "6098e9e4619e5d00151f8f79" && <Dropdown.Item href="#/action-3">
+                          <p className="boldness fonty" style={{color:'red'}}> Edit</p> 
+                          </Dropdown.Item>}
+                          {post.user._id === "6098e9e4619e5d00151f8f79" && <Dropdown.Item href="#/action-3">
+                          <p className="boldness fonty" style={{color:'red'}}> Delete</p> 
+                          </Dropdown.Item>}
+                          
+                        </Dropdown.Menu>
+                      </Dropdown>
+                    </div>
                     </div>
 
                     <p className="postP mar2"> {post.text}</p>
@@ -115,6 +144,7 @@ class PostSection extends Component {
               </Card>
             ))}
         </div>
+       
       </>
     );
   }
