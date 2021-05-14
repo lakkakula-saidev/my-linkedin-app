@@ -7,7 +7,7 @@ import "./styles/mainBody1.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ProfileBody from "./components/ProfileBody";
 import HomePage from "./components/HomePage";
-import PostSection from "./components/PostSection"
+import PostSection from "./components/PostSection";
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
         />
         <Route component={HomePage} path="/feed" exact />
         <Footer />
-        <PostSection/>
+        <PostSection />
       </Router>
     </div>
   );

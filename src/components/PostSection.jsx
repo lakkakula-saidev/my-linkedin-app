@@ -8,7 +8,6 @@ import {
   Table,
   Figure,
   Dropdown,
-  
 } from "react-bootstrap";
 import pic from "../leoAssets/ciao.jpg";
 import "../styleLeo.css";
@@ -17,6 +16,7 @@ import HelpIcon from "@material-ui/icons/Help";
 import LanguageIcon from "@material-ui/icons/Language";
 import { BiWorld, BiDotsHorizontalRounded } from "react-icons/bi";
 import React from "react";
+import { format, parseISO } from "date-fns";
 
 class PostSection extends Component {
   state = {
@@ -58,55 +58,63 @@ class PostSection extends Component {
     }
   };
 
+  componentDidUpdate = async () => {};
+
   render() {
     let cts = {};
     let cdate = new Date(cts).toString();
     return (
       <>
-
-        <Container>
-
-          {this.state.reservations.slice(0, 8).map((post) => (
-            <Card className="padder" key={post.id}>
-              <Card.Body>
-                <Card.Text>
-                  <div className="sizer">
-                    {" "}
-                    <div>
-                      <img
-                        src={post.user.image}
-                        alt=""
-                        className="figure-img"
-                      />
+        <div>
+          {this.state.reservations
+            .slice(
+              this.state.reservations.length - 10,
+              this.state.reservations.length
+            )
+            .reverse()
+            .map((post) => (
+              <Card className="padder" key={post.id}>
+                <Card.Body>
+                  <Card.Text>
+                    <div className="sizer">
+                      {" "}
+                      <div>
+                        <img
+                          src={post.user.image}
+                          alt=""
+                          className="figure-img"
+                        />
+                      </div>
+                      <div className="mar">
+                        <span> </span>
+                        <h6 className="boldness">{post.user.name}</h6>
+                        <span> </span>
+                        <h6 className="boldness">{post.user.surname}</h6>
+                        <span> </span>
+                        <h6 className="grey">• Following</h6>
+                        <div className="grey">{post.user.title}</div>
+                        <p className="grey">
+                          {post.createdAt} • <BiWorld />{" "}
+                        </p>
+                      </div>
+                      <div className="left-elementA">
+                        <h2>
+                          <BiDotsHorizontalRounded />
+                        </h2>
+                      </div>
+                      <div className="foo">
+                        <h2>
+                          <BiDotsHorizontalRounded />
+                        </h2>
+                      </div>
                     </div>
-                    <div className="mar">
-                      <span> </span>
-                      <h6 className="boldness">{post.user.name}</h6>
-                      <span> </span>
-                      <h6 className="boldness">{post.user.surname}</h6>
-                      <span> </span>
-                      <h6 className="grey">• Following</h6>
-                      <div className="grey">{post.user.title}</div>
-                      <p className="grey">
-                        {post.createdAt} • <BiWorld />{" "}
-                      </p>
-                    </div>
-                    <div className="left-elementA">
-                      <h2>
-                        <BiDotsHorizontalRounded />
-                      </h2>
-                    </div>
 
-                    <div className="foo"><h2><BiDotsHorizontalRounded/></h2></div>
-                   
-                  </div>
-
-                  <p className="postP mar2"> {post.text}</p>
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          ))}
-        </Container>
+                    <p className="postP mar2"> {post.text}</p>
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            ))}
+        </div>
       </>
     );
   }

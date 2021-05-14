@@ -1,7 +1,7 @@
 .postParent {
   background-color: white;
   border-radius: 1rem;
-  max-width: 540px;
+
   min-height: 116px;
   display: flex;
   flex-direction: column;

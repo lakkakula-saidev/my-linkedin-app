@@ -1,11 +1,11 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import AddIcon from "@material-ui/icons/Add";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import ExpForm from "./ExpForm";
 import "../ExpEdu.css";
 import { format, parseISO } from "date-fns";
-/* import { convertDate } from "../helpers/dates"; */
+import LOAD_API from "./LOAD_API";
 
 class ExperienceEducation extends React.Component {
   state = {
@@ -15,117 +15,44 @@ class ExperienceEducation extends React.Component {
     newExperience: false,
     editExperience: {},
     delValue: false,
+    isLoading: false,
+    checked: false,
+    emptyExperience: {
+      role: "",
+      company: "",
+      area: "",
+      startDate: "",
+      endDate: "",
+      description: "",
+    },
   };
 
-  async loadExperience(id) {
-    console.log(id);
-    const endpoint = ` https://striveschool-api.herokuapp.com/api/profile/${id}/experiences`;
-
-    try {
-      let response = await fetch(endpoint, {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZTllNDYxOWU1ZDAwMTUxZjhmNzkiLCJpYXQiOjE2MjA2MzQwODUsImV4cCI6MTYyMTg0MzY4NX0.LVFiiWvC5hj_tkyYlnYiUZd9DafCRH7foRwmjGXSjPM",
-        },
-      });
-      if (response.ok) {
-        response = await response.json();
-        this.setState({
-          Experience: response,
-        });
-        this.setState({ isLoading: !this.state.isloading });
-        console.log(this.state.Experience);
-      }
-    } catch (error) {
-    } finally {
-    }
-  }
-
-  async postExperience(newExp) {
-    const endpoint = ` https://striveschool-api.herokuapp.com/api/profile/${this.props.user_id}/experiences`;
-
-    try {
-      let response = await fetch(endpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZTllNDYxOWU1ZDAwMTUxZjhmNzkiLCJpYXQiOjE2MjA2MzQwODUsImV4cCI6MTYyMTg0MzY4NX0.LVFiiWvC5hj_tkyYlnYiUZd9DafCRH7foRwmjGXSjPM",
-        },
-        body: JSON.stringify(newExp),
-      });
-      if (response.ok) {
-        console.log("Your Data is Sucessfully Posted");
-      }
-    } catch (error) {
-      alert(error);
-    }
-  }
-
-  async putExperience(id, ediExp, method) {
-    const endpoint = ` https://striveschool-api.herokuapp.com/api/profile/${this.props.user_id}/experiences/${id}`;
-
-    try {
-      let response = await fetch(endpoint, {
-        method: method,
-        headers: {
-          "Content-Type": "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZTllNDYxOWU1ZDAwMTUxZjhmNzkiLCJpYXQiOjE2MjA2MzQwODUsImV4cCI6MTYyMTg0MzY4NX0.LVFiiWvC5hj_tkyYlnYiUZd9DafCRH7foRwmjGXSjPM",
-        },
-        body: JSON.stringify(ediExp),
-      });
-      if (response.ok) {
-        console.log("Your Data is Sucessfully changed!!!");
-      }
-    } catch (error) {
-      alert(error);
-    }
-  }
-
-  componentDidMount() {
-    this.loadExperience(this.props.user_id);
+  async componentDidMount() {
+    const [data, loadBool] = await LOAD_API(
+      this.props.user_id,
+      "profile",
+      "experiences"
+    );
+    this.setState({ Experience: data, isLoading: loadBool });
   }
 
   async componentDidUpdate(prevProps, prevState) {
-    console.log(this.state.newExperience);
-    if (prevState.newExperience !== this.state.newExperience) {
-      if (this.state.delValue === true) {
-        await this.putExperience(
-          prevState.editExperience._id,
-          this.state.newExperience,
-          "DELETE"
-        );
-        await this.loadExperience(this.props.user_id);
-        await this.setState({ delValue: false });
-      } else if (prevState.editExperience !== {}) {
-        console.log();
-        await this.putExperience(
-          prevState.editExperience._id,
-          this.state.newExperience,
-          "PUT"
-        );
-        await this.loadExperience(this.props.user_id);
-      } else {
-        this.postExperience(this.state.newExperience);
-        this.loadExperience(this.props.user_id);
-      }
-    } /* else if (prevState.editExperience !== {}) {
-      this.putExperience(prevState.editExperience);
-      this.loadExperience(this.props.user_id);
-    } */
+    if (prevState.showForm !== this.state.showForm) {
+      /* console.log("this function is invoked"); */
+      const [data, loadBool] = await LOAD_API(
+        this.props.user_id,
+        "profile",
+        "experiences"
+      );
+      this.setState({ Experience: data, isLoading: loadBool });
+      console.log(this.state.Experience);
+    }
   }
 
-  /*  postData(newExp) {
-    console.log(newExp);
-
-    this.setState({ showForm: false, newExperience: newExp });
-  }
- */
   render() {
     return (
       <>
-        <Row
+        <div
           className="d-flex flex-column"
           style={{
             padding: "24px",
@@ -134,11 +61,11 @@ class ExperienceEducation extends React.Component {
             marginTop: "20px",
           }}
         >
-          <div className="d-flex mb-2 justify-content-between">
-            <h6>Experience</h6>
+          <div className="d-flex mb-4 justify-content-between">
+            <h5>Experience</h5>
 
             <div
-              className="editExp"
+              className="addExp"
               onClick={() =>
                 this.setState({ showForm: true, editExperience: {} })
               }
@@ -146,27 +73,30 @@ class ExperienceEducation extends React.Component {
               <AddIcon />
             </div>
           </div>
-          {this.state.Experience.map((item) => (
-            <div className="d-flex mb-3 justify-content-between">
-              <div className="d-flex justify-content-between">
+          {this.state.Experience.map((item, id) => (
+            <div className="d-flex mb-3 justify-content-flex-start divExp">
+              <div>
                 <img
                   src="https://www.vouchercodes.co.uk/static/v10/images/merchant/logo/128px/825_180920143441.png"
-                  style={{ width: "75px", height: "75px" }}
+                  style={{ width: "75px", height: "75px", marginRight: "20px" }}
                 ></img>
-                <div className="ml-3">
+              </div>
+
+              <div className="d-flex justify-content-between expClass0">
+                <div className="d-flex flex-column ml-3 expClass">
                   <h6>{item.role}</h6>
-                  <p>{item.company}</p>
-                  <span>
-                    {format(parseISO(item.startDate), "yyyy-MMM-dd")} {" - "}
+                  <p className="workCompany">{item.company}</p>
+                  <p className="expDetails">
+                    {format(parseISO(item.startDate), "yyyy-MMM-dd")} {"to "}
                     {item.endData !== ""
                       ? format(parseISO(item.endDate), "yyyy-MMM-dd")
                       : "present"}
-                  </span>
+                  </p>
+                  <p className="expDetails">{item.area}</p>
                 </div>
-              </div>
-              <div>
+
                 <div
-                  className="editExp"
+                  className={id === 0 ? "specialeditExp" : "editExp"}
                   id={item._id}
                   onClick={(e) =>
                     this.setState({ showForm: true, editExperience: item })
@@ -175,24 +105,24 @@ class ExperienceEducation extends React.Component {
                   <EditOutlinedIcon />
                 </div>
               </div>
+              <hr></hr>
             </div>
           ))}
-          <hr></hr>
+
           <ExpForm
             editExperience={this.state.editExperience}
             user_id={this.state.user_id}
             show={this.state.showForm}
+            emptyExperience={this.state.emptyExperience}
             cancelForm={() => this.setState({ showForm: false })}
-            closeForm={(experience, bol) =>
+            closeForm={(bol) =>
               this.setState({
                 showForm: false,
-                newExperience: experience,
-                editExperience: {},
-                delValue: bol,
+                isClosed: true,
               })
             }
           />
-        </Row>
+        </div>
       </>
     );
   }
@@ -224,3 +154,61 @@ export default ExperienceEducation;
                         </div>
                     </div> */
 }
+
+/* console.log(this.state.newExperience); */
+/*     async componentDidUpdate(prevProps, prevState) {
+    if (prevState.newExperience !== this.state.newExperience) {
+      if (this.state.delValue === true) {
+        console.log("delete");
+        await this.putExperience(
+          prevState.editExperience._id,
+          this.state.newExperience,
+          "DELETE"
+        );
+        DELETE_API(
+          this.state.newExperience,
+          user_id,
+          prevState.editExperience._id,
+          "profile",
+          "experience"
+        );
+
+        await this.loadExperience(this.props.user_id);
+        await this.setState({ delValue: false });
+      } else if (prevState.editExperience !== {}) {
+        console.log("put");
+
+        await this.putExperience(
+          prevState.editExperience._id,
+          this.state.newExperience,
+          "PUT"
+        );
+        await this.loadExperience(this.props.user_id);
+      } else {
+        console.log("post");
+        POST_API(
+          this.state.newExperience,
+          this.props.user_id,
+          "profile",
+          "experiences"
+        );
+
+        this.loadExperience(this.props.user_id);
+      }
+    } 
+  } */
+
+/* else if (prevState.editExperience !== {}) {
+      this.putExperience(prevState.editExperience);
+      this.loadExperience(this.props.user_id);
+    } */
+
+/* {
+  format(parseISO(item.startDate), "yyyy-MMM-dd");
+}
+}
+{
+  item.endData !== ""
+    ? format(parseISO(item.endDate), "yyyy-MMM-dd")
+    : "present";
+} */

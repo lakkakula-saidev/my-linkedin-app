@@ -1,20 +1,10 @@
-
-
 import { Component } from "react";
-import {
-  Col,
-  Row,
-  Container,
-  Card,
-  Button,
-  Table,
-  Figure,
-} from "react-bootstrap";
+import { Col, Container, Card, Button, Figure } from "react-bootstrap";
 import pic from "../leoAssets/ciao.jpg";
 import "../styleLeo.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import HelpIcon from '@material-ui/icons/Help';
-import LanguageIcon from '@material-ui/icons/Language';
+import HelpIcon from "@material-ui/icons/Help";
+import LanguageIcon from "@material-ui/icons/Language";
 
 import React from "react";
 
@@ -71,31 +61,31 @@ class RightSideBar extends Component {
     return (
       <>
         <Container>
-          <div className=" margy"><Col >
-         <div className="margy"> <Button size="sm" className="borderR" variant="primary">
-              Connect
-            </Button>
-            <Button size="sm" className="borderR" variant="primary">
-              Connect
-            </Button>
-            <LanguageIcon/>
-            
-            </div>
-    <p className="boldness">Modifica il profilo pubblico e l’URL <HelpIcon fontSize="small" /></p>
-          
-          </Col>
+          <div className=" margy">
+            <Col>
+              <div className="margy">
+                {" "}
+                <Button size="sm" className="borderR" variant="primary">
+                  Connect
+                </Button>
+                <Button size="sm" className="borderR" variant="primary">
+                  Connect
+                </Button>
+                <LanguageIcon />
+              </div>
+              <p className="boldness">
+                Modifica il profilo pubblico e l’URL{" "}
+                <HelpIcon fontSize="small" />
+              </p>
+            </Col>
           </div>
 
-          <Col
-            
-            style={{ backgroundColor: "white" }}
-            className="upperP   backG"
-          >
-            <Card className=" imageProfile" style={{ width: "14rem"}}>
+          <Col style={{ backgroundColor: "white" }} className="upperP   backG">
+            <Card className=" imageProfile" style={{ width: "14rem" }}>
               <Card.Img variant="top" src={pic} />
             </Card>
           </Col>
-          <Col  className=" upperP backG">
+          <Col className=" upperP backG">
             <h6>Other people</h6>
 
             {this.state.reservations.slice(0, 8).map((user) => (
@@ -116,7 +106,7 @@ class RightSideBar extends Component {
               </div>
             ))}
           </Col>
-          <Col  className="backG">
+          <Col className="backG">
             <h6>People you may know</h6>
             {this.state.reservations.slice(0, 8).map((user) => (
               <div className=" sizer" key={user._id}>

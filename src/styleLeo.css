@@ -1,164 +1,149 @@
 .borderR {
-
-    border-radius: 50px !important;
+  border-radius: 50px !important;
 }
 
-.right{
-    display: inline !important;
-    float:right !important;
-
-
+.right {
+  display: inline !important;
+  float: right !important;
 }
 
 h6 {
-    display: inline;
-    display: inline-block;
+  display: inline;
+  display: inline-block;
 }
 
 .section {
-    border: 1px solid #ccc;
-    display: flex;
-    flex-direction: row;
-    font-family: sans-serif;
-  }
-  
-  .paragraph {
-    color: #555;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .content {
-    padding: 20px;
-  }
-  
-  .title {
-    font-size: 24px;
-    color: #222;
-    line-height: 24px;
-  }
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: row;
+  font-family: sans-serif;
+}
 
-  img {
-    width: 100%;
-    height: auto;
-  }
+.paragraph {
+  color: #555;
+  display: flex;
+  flex-direction: column;
+}
 
-  .sizer {
-     display:flex;
-     flex-direction: row;
-     justify-content: start;
-     margin-bottom: 10px;
-     padding: 10px;
+.content {
+  padding: 20px;
+}
 
-  }
-  .imageProfile {
-      margin-left: 4px;
-      margin-bottom: 4px;
-      margin-top: 5px;
-  }
-  
+.title {
+  font-size: 24px;
+  color: #222;
+  line-height: 24px;
+}
 
- 
+img {
+  width: 100%;
+  height: auto;
+}
 
- .testing{
-     flex: 0 0 30%
-     
- }
- .figure-caption {
-    font-size: .875em;
-    color: #6c757d;
-    margin-left: 10px;
+.sizer {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+.imageProfile {
+  margin-left: 4px;
+  margin-bottom: 4px;
+  margin-top: 5px;
+}
+
+.testing {
+  flex: 0 0 30%;
+}
+.figure-caption {
+  font-size: 0.875em;
+  color: #6c757d;
+  margin-left: 10px;
 }
 
 .figure-img {
-    margin-bottom: .5rem;
-    line-height: 1;
-    border-radius: 60px;
-    height: 50px;
-    width: 50px;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+  border-radius: 60px;
+  height: 50px;
+  width: 50px;
 }
 
 .boldness {
-    font-weight: bold;
-
+  font-weight: bold;
 }
 
 p {
-    margin-top: 0;
-    margin-bottom: 0rem !important;
+  margin-top: 0;
+  margin-bottom: 0rem !important;
 }
 
 button {
-    margin-top: 5px !important;
-    margin-bottom: 5px !important;
-    margin-right: 5px !important
-
-    
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
+  margin-right: 5px !important;
 }
 .backG {
-    background-color: white;
-    border-radius: 10px;
-    background-repeat: no-repeat;
+  background-color: white;
+  border-radius: 10px;
+  background-repeat: no-repeat;
   background-size: auto;
-
 }
 
 .upperP {
-    padding: 1px;
-    margin-bottom:30px;
-    display: block;
+  padding: 1px;
+  margin-bottom: 30px;
+  display: block;
 }
 
 .margy {
-margin-bottom:15px;
+  margin-bottom: 15px;
 }
 
 .postP {
-    font-size: medium;
-
+  font-size: medium;
 }
 
 .padder {
-    margin:20px;
+  margin-bottom: 20px;
 }
 .grey {
-    color:#6c757d
+  color: #6c757d;
 }
 .mar {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
-.mar2{
-    margin-left: 20px;
+.mar2 {
+  margin-left: 20px;
 }
 
 .justi {
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-left: 200px;
-    padding: 10px;
-
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 200px;
+  padding: 10px;
 }
 
 .containerA {
-    position: fixed;
-    left: 350px;
-    padding: 0;
-    margin: 0;
-    background-color: #ff00ff;
+  position: fixed;
+  left: 350px;
+  padding: 0;
+  margin: 0;
+  background-color: #ff00ff;
 }
 
 .left-elementA {
-    
-    display: inline-block;
-    float: left;
+  display: inline-block;
+  float: left;
 }
 
 .foo {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding-right: 10px;
-    color:grey
-  }
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-right: 10px;
+  color: grey;
+}
