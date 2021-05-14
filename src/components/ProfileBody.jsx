@@ -14,7 +14,7 @@ export class HomeBody extends Component {
             <Col md={8} lg={8}>
               <ProfilePage />
             </Col>
-            <Col md={4} lg={3}>
+            <Col md={4} lg={3} className=" my-sm-4 my-md-0 my-lg-0 ">
               <RightSideBar />
             </Col>
           </Row>

@@ -145,17 +145,13 @@ h4 {
 .infoRow li:hover {
   text-decoration: underline;
 }
-.btn-primary {
+#profileButtons {
   border-radius: 50px;
   background-color: white;
-  color: var(--color-text-low-emphasis-shift);
-  border: 1.8px solid rgb(170, 170, 170);
+  border: 1.8px solid rgb(170, 170, 170) !important;
   padding-left: 1.4rem !important;
   padding-right: 1.4rem !important;
   line-height: 1rem !important;
-}
-.btn-primary:hover {
-  background-color: #f3f2ef;
 }
 
 .infoRow > ul > li:first-of-type button {
@@ -170,7 +166,7 @@ h4 {
   border: 1.8px solid #004182;
 }
 
-.btn-primary:hover {
+#profileButtons:hover {
   border-radius: 50px;
   background-color: #ebebeb;
   color: var(--color-text-low-emphasis-shift);
