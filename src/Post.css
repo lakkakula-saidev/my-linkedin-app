@@ -32,6 +32,13 @@
   border-radius: 5rem;
   border: 1px solid grey;
 }
+.form-control:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: none !important;
+  outline: 0;
+  box-shadow: none !important;
+}
 .postBtn:hover {
   background-color: #d8dcde;
 }
@@ -48,7 +55,7 @@
   color: #0df4a4;
   cursor: pointer;
 }
-.refresh:focus {
+.turn {
   animation-name: turn;
   animation-duration: 1s;
   animation-iteration-count: 1;

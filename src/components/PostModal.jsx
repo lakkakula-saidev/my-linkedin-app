@@ -31,6 +31,16 @@ class PostModal extends Component {
     putCursor: () =>
       document.getElementById("exampleFormControlTextarea1").focus(),
     image: "",
+    refresh: "refresh",
+    clickRefresh: false,
+  };
+
+  refreshBtn = () => {
+    this.setState({ refresh: "refresh turn" });
+    setTimeout(() => this.setState({ refresh: "refresh" }), 1000);
+    this.setState({
+      post: { ...this.state.post, text: "" },
+    });
   };
 
   imageInput = () => {
@@ -191,12 +201,8 @@ class PostModal extends Component {
             </button>
             <span>
               <RefreshRoundedIcon
-                className="refresh"
-                onClick={() =>
-                  this.setState({
-                    post: { ...this.state.post, text: "" },
-                  })
-                }
+                className={this.state.refresh}
+                onClick={this.refreshBtn}
               />
             </span>
           </Modal.Body>
@@ -206,10 +212,21 @@ class PostModal extends Component {
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "space-evenly",
+                alignItems: "center",
+                marginBottom: "1rem",
+                marginRight: "1rem",
               }}
             >
-              <Spinner animation="border" variant="primary" />
-              <Spinner animation="border" variant="primary" />
+              <p
+                style={{
+                  color: "rgb(39,121,201)",
+                  fontWeight: "500",
+                  padding: "1rem",
+                }}
+              >
+                {" "}
+                <em>While uploading you cant Post anything new</em>{" "}
+              </p>
               <Spinner animation="border" variant="primary" />
             </div>
           )}
