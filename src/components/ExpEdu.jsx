@@ -82,30 +82,34 @@ class ExperienceEducation extends React.Component {
                 ></img>
               </div>
 
-              <div className="d-flex justify-content-between expClass0">
-                <div className="d-flex flex-column ml-3 expClass">
-                  <h6>{item.role}</h6>
-                  <p className="workCompany">{item.company}</p>
-                  <p className="expDetails">
-                    {format(parseISO(item.startDate), "yyyy-MMM-dd")} {"to "}
-                    {item.endData !== ""
-                      ? format(parseISO(item.endDate), "yyyy-MMM-dd")
-                      : "present"}
-                  </p>
-                  <p className="expDetails">{item.area}</p>
-                </div>
+              <div className="d-flex flex-column w-100">
+                <div className="d-flex justify-content-between expClass0">
+                  <div className="d-flex flex-column ml-3 expClass">
+                    <h6>{item.role}</h6>
+                    <p className="workCompany">{item.company}</p>
+                    <p className="expDetails">
+                      {format(parseISO(item.startDate), "yyyy-MMM-dd")} {"to "}
+                      {item.endData !== ""
+                        ? format(parseISO(item.endDate), "yyyy-MMM-dd")
+                        : "present"}
+                    </p>
+                    <p className="expDetails">{item.area}</p>
+                  </div>
 
-                <div
-                  className={id === 0 ? "specialeditExp" : "editExp"}
-                  id={item._id}
-                  onClick={(e) =>
-                    this.setState({ showForm: true, editExperience: item })
-                  }
-                >
-                  <EditOutlinedIcon />
+                  <div
+                    className={id === 0 ? "specialeditExp" : "editExp"}
+                    id={item._id}
+                    onClick={(e) =>
+                      this.setState({ showForm: true, editExperience: item })
+                    }
+                  >
+                    <EditOutlinedIcon />
+                  </div>
+                </div>
+                <div>
+                  <hr></hr>
                 </div>
               </div>
-              <hr></hr>
             </div>
           ))}
 

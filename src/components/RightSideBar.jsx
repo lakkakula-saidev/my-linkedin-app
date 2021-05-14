@@ -95,7 +95,7 @@ class RightSideBar extends Component {
               >
                 <Figure.Image alt="171x180" src={user.image} />
 
-                <div className="justify-content-start  ">
+                <div className="justify-content-start">
                   {" "}
                   <Figure.Caption className="right borderR ">
                     <p className="boldness">
@@ -112,7 +112,7 @@ class RightSideBar extends Component {
           </Col>
           <Col className="backG">
             <h6 className="sideBarHeading">People you may know</h6>
-            {this.state.reservations.slice(0, 8).map((user) => (
+            {this.state.reservations.slice(0, 7).map((user) => (
               <div className=" sizer" key={user._id}>
                 <Figure.Image
                   width={17}

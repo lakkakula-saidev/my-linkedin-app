@@ -7,7 +7,6 @@ import "./styles/mainBody1.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ProfileBody from "./components/ProfileBody";
 import HomePage from "./components/HomePage";
-import PostSection from "./components/PostSection";
 import "./Post.css";
 
 function App() {

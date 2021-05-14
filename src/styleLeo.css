@@ -1,5 +1,7 @@
 .borderR {
   border-radius: 50px !important;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 
 .right {

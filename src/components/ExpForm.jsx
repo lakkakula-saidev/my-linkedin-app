@@ -83,7 +83,7 @@ class ExpForm extends Component {
     }
   }
 
-  componentDidMount(prevProps, prevState) {
+  componentDidMount() {
     this.setState({ experience: this.props.emptyExperience });
   }
 
@@ -101,7 +101,7 @@ class ExpForm extends Component {
 
   render() {
     {
-      console.log(this.props.editExperience);
+      console.log(this.state.experience);
     }
     return (
       <>
@@ -367,17 +367,13 @@ class ExpForm extends Component {
             )}
 
             <button
-              style={{
-                color: "white",
-                backgroundColor: "rgb(10,102,194)",
-                border: "none",
-                borderRadius: "2rem",
-                minWidth: "4rem",
-                minHeight: "2rem",
-              }}
               /* ClassName="ml-auto" */
               className={
-                ValidateModal(this.state.experience) ? "postbtn2 " : "postbtn1 "
+                Object.values(this.state.experience).some(
+                  (item) => item === ""
+                ) || Object.values(this.state.experience).length < 5
+                  ? "postbtn3 "
+                  : "postbtn1 "
               }
               onClick={() =>
                 Object.keys(this.props.editExperience).length !== 0
