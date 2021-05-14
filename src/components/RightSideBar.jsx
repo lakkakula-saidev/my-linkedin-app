@@ -60,7 +60,7 @@ class RightSideBar extends Component {
 
     return (
       <>
-        <Container>
+        <div>
           <div className=" margy">
             <Col>
               <div className="margy">
@@ -80,28 +80,28 @@ class RightSideBar extends Component {
             </Col>
           </div>
 
-          <Col
-            
-            style={{ backgroundColor: "white" }}
-            className="upperP   backG"
-          >
-            <Card className=" imageProfile" style={{ width: "auto"},{paddingRight:"5px"}}>
+          <Col style={{ backgroundColor: "white" }} className="upperP  backG">
+            <Card className=" imageProfile" style={{ width: "14rem" }}>
               <Card.Img variant="top" src={pic} />
             </Card>
           </Col>
-          <Col className=" upperP backG">
-            <h6>Other people</h6>
+          <Col className=" upperP backG pl-1">
+            <h6 className="sideBarHeading">Other people</h6>
 
             {this.state.reservations.slice(0, 8).map((user) => (
-              <div className=" sizer" key={user._id}>
-                <div className="testing">
-                  <Figure.Image alt="171x180" src={user.image} />
-                </div>
-                <div className="justify-content-start  ">
+              <div
+                className="d-flex sizer justify-content-start"
+                key={user._id}
+              >
+                <Figure.Image alt="171x180" src={user.image} />
+
+                <div className="justify-content-start">
                   {" "}
                   <Figure.Caption className="right borderR ">
-                    <p className="boldness">{user.name}{" "}{user.username} 3°+</p>
-                    <p>{user.title}</p>
+                    <p className="boldness">
+                      {user.name} {user.username} 3°+
+                    </p>
+                    <p className="titlePara">{user.title}</p>
                     <Button className="borderR" variant="outline-secondary">
                       Connect
                     </Button>{" "}
@@ -111,22 +111,23 @@ class RightSideBar extends Component {
             ))}
           </Col>
           <Col className="backG">
-            <h6>People you may know</h6>
-            {this.state.reservations.slice(0, 8).map((user) => (
+            <h6 className="sideBarHeading">People you may know</h6>
+            {this.state.reservations.slice(0, 7).map((user) => (
               <div className=" sizer" key={user._id}>
-                <div className="testing">
-                  <Figure.Image
-                    width={17}
-                    height={18}
-                    alt="171x180"
-                    src={user.image}
-                  />
-                </div>
+                <Figure.Image
+                  width={17}
+                  height={18}
+                  alt="171x180"
+                  src={user.image}
+                />
+
                 <div className="justify-content-start  ">
                   {" "}
                   <Figure.Caption className="right borderR ">
-                    <p className="boldness">{user.name}{" "}{user.username} 3°+</p>
-                    <p>{user.title}</p>
+                    <p className="boldness">
+                      {user.name} {user.username} 3°+
+                    </p>
+                    <p className="titlePara">{user.title}</p>
                     <Button className="borderR" variant="outline-secondary">
                       Connect
                     </Button>{" "}
@@ -135,7 +136,7 @@ class RightSideBar extends Component {
               </div>
             ))}
           </Col>
-        </Container>
+        </div>
       </>
     );
   }

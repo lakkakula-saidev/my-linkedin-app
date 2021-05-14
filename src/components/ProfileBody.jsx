@@ -14,11 +14,10 @@ export class HomeBody extends Component {
             <Col md={8} lg={8}>
               <ProfilePage />
             </Col>
-            <Col md={4} lg={4}>
+            <Col md={4} lg={3}>
               <RightSideBar />
             </Col>
           </Row>
-          <Footer />
         </Container>
       </div>
     );
