@@ -7,7 +7,7 @@ export default class Featured extends Component {
     return (
       <div className="aboutCard">
         <div className="d-flex justify-content-between">
-          <h3>Featured</h3>
+          <h5 className="sectionTitle">Featured</h5>
           <div className="d-flex justify-content-between">
             <div className="Icon">
               <AddIcon />

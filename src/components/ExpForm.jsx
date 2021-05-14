@@ -8,6 +8,8 @@ import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import "../ExpEdu.css";
 import POST_API from "./POST_API";
 import DELETE_API from "./DELETE_API";
+import PUT_API from "./PUT_API";
+import ValidateModal from "./ValidateModal";
 
 const initialState = {
   checked: false,
@@ -36,39 +38,59 @@ class ExpForm extends Component {
   };
 
   async addExp() {
-    console.log("this is working");
-    await POST_API(
-      this.state.experience,
-      this.props.user_id,
-      "profile",
-      "experiences"
-    );
-
-    await this.props.closeForm(false);
+    const isEmpty = await ValidateModal(this.state.experience);
+    if (isEmpty !== true) {
+      await POST_API(
+        this.state.experience,
+        this.props.user_id,
+        "profile",
+        "experiences"
+      );
+      await this.props.closeForm(false);
+    } else {
+      alert(
+        "You data cannot be submitted as.. Some of the Data is invalide or empty"
+      );
+      await this.props.closeForm(false);
+    }
   }
 
   async delExp() {
-    console.log("this is working");
-    await DELETE_API(
-      this.state.experience,
-      this.props.user_id,
-      this.state.experience._id,
-      "profile",
-      "experiences"
-    );
-    await this.props.closeForm(false);
+    const isEmpty = ValidateModal(this.state.experience);
+    if (isEmpty !== true) {
+      await DELETE_API(
+        this.state.experience,
+        this.props.user_id,
+        this.state.experience._id,
+        "profile",
+        "experiences"
+      );
+      await this.props.closeForm(false);
+    } else {
+      alert(
+        "You data cannot be submitted as.. Some of the Data is invalide or empty"
+      );
+      await this.props.closeForm(false);
+    }
   }
 
   async putExp() {
-    console.log("this is working");
-    await DELETE_API(
-      this.state.experience,
-      this.props.user_id,
-      this.state.experience._id,
-      "profile",
-      "experiences"
-    );
-    await this.props.closeForm(false);
+    const isEmpty = ValidateModal(this.state.experience);
+    if (isEmpty !== true) {
+      await PUT_API(
+        this.state.experience,
+        this.props.user_id,
+        this.state.experience._id,
+        "profile",
+        "experiences"
+      );
+      await this.props.closeForm(false);
+    } else {
+      alert(
+        "You data cannot be submitted as.. Some of the Data is invalide or empty"
+      );
+      await this.props.closeForm(false);
+    }
   }
 
   componentDidMount(prevProps, prevState) {
@@ -76,7 +98,12 @@ class ExpForm extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.editExperience !== this.props.editExperience) {
+    if (
+      Object.keys(prevProps.editExperience).length !== 0 &&
+      Object.keys(this.props.editExperience).length === 0
+    ) {
+      this.setState({ experience: this.props.emptyExperience });
+    } else if (prevProps.editExperience !== this.props.editExperience) {
       this.setState({ experience: this.props.editExperience });
     }
   }
@@ -253,7 +280,7 @@ class ExpForm extends Component {
                     })
                   }
                 />
-                bj["key"] !== undefined
+
                 {!this.state.experience.startDate && (
                   <p className="invalid mt-3">Please enter a start date.</p>
                 )}

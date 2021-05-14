@@ -16,6 +16,15 @@ class ExperienceEducation extends React.Component {
     editExperience: {},
     delValue: false,
     isLoading: false,
+    checked: false,
+    emptyExperience: {
+      role: "",
+      company: "",
+      area: "",
+      startDate: "",
+      endDate: "",
+      description: "",
+    },
   };
 
   async componentDidMount() {
@@ -43,7 +52,7 @@ class ExperienceEducation extends React.Component {
   render() {
     return (
       <>
-        <Row
+        <div
           className="d-flex flex-column"
           style={{
             padding: "24px",
@@ -52,8 +61,8 @@ class ExperienceEducation extends React.Component {
             marginTop: "20px",
           }}
         >
-          <div className="d-flex mb-2 justify-content-between">
-            <h6>Experience</h6>
+          <div className="d-flex mb-4 justify-content-between">
+            <h5>Experience</h5>
 
             <div
               className="addExp"
@@ -64,27 +73,30 @@ class ExperienceEducation extends React.Component {
               <AddIcon />
             </div>
           </div>
-          {this.state.Experience.map((item) => (
-            <div className="d-flex mb-3 justify-content-between divExp">
-              <div className="d-flex justify-content-between">
+          {this.state.Experience.map((item, id) => (
+            <div className="d-flex mb-3 justify-content-flex-start divExp">
+              <div>
                 <img
                   src="https://www.vouchercodes.co.uk/static/v10/images/merchant/logo/128px/825_180920143441.png"
-                  style={{ width: "75px", height: "75px" }}
+                  style={{ width: "75px", height: "75px", marginRight: "20px" }}
                 ></img>
+              </div>
+
+              <div className="d-flex justify-content-between expClass0">
                 <div className="d-flex flex-column ml-3 expClass">
                   <h6>{item.role}</h6>
                   <p className="workCompany">{item.company}</p>
-                  <span>
+                  <p className="expDetails">
                     {format(parseISO(item.startDate), "yyyy-MMM-dd")} {"to "}
                     {item.endData !== ""
                       ? format(parseISO(item.endDate), "yyyy-MMM-dd")
                       : "present"}
-                  </span>
+                  </p>
+                  <p className="expDetails">{item.area}</p>
                 </div>
-              </div>
-              <div>
+
                 <div
-                  className="editExp"
+                  className={id === 0 ? "specialeditExp" : "editExp"}
                   id={item._id}
                   onClick={(e) =>
                     this.setState({ showForm: true, editExperience: item })
@@ -93,14 +105,15 @@ class ExperienceEducation extends React.Component {
                   <EditOutlinedIcon />
                 </div>
               </div>
+              <hr></hr>
             </div>
           ))}
-          <hr></hr>
+
           <ExpForm
             editExperience={this.state.editExperience}
-            isClosed={this.state.isClosed}
             user_id={this.state.user_id}
             show={this.state.showForm}
+            emptyExperience={this.state.emptyExperience}
             cancelForm={() => this.setState({ showForm: false })}
             closeForm={(bol) =>
               this.setState({
@@ -109,7 +122,7 @@ class ExperienceEducation extends React.Component {
               })
             }
           />
-        </Row>
+        </div>
       </>
     );
   }

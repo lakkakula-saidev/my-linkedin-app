@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import RightSideBar from "./RightSideBar";
-import Dashboard from "./Dashboard";
+import Footer from "./Footer";
 import ProfilePage from "./ProfilePage";
 import { Link, withRouter } from "react-router-dom";
 
@@ -18,6 +18,7 @@ export class HomeBody extends Component {
               <RightSideBar />
             </Col>
           </Row>
+          <Footer />
         </Container>
       </div>
     );

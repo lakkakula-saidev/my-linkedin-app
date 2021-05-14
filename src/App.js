@@ -20,7 +20,6 @@ function App() {
           exact
         />
         <Route component={HomePage} path="/feed" exact />
-        <Footer />
       </Router>
     </div>
   );

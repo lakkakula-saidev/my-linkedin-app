@@ -184,6 +184,12 @@ h4 {
   cursor: pointer;
   display: none;
 }
+.specialeditExp {
+  cursor: pointer;
+}
+.expClass0 {
+  flex-grow: 1;
+}
 .expClass h6 {
   margin-bottom: 0px;
 }
@@ -194,4 +200,23 @@ h4 {
 
 .divExp:hover .editExp {
   display: block;
+}
+
+.activityDiv {
+  padding: 20px 30px;
+  width: 100%;
+  background-color: white;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.sectionTitle {
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+.expDetails {
+  color: #585858;
+  font-size: 14px;
+  font-weight: 400;
 }

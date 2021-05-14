@@ -1,15 +1,14 @@
 import React, { Component } from "react";
-import { Jumbotron, Container, Col, Image, Row } from "react-bootstrap";
+import { Jumbotron, Col, Image, Row } from "react-bootstrap";
 import { DropdownButton, Dropdown, Spinner, Button } from "react-bootstrap";
-import { Route } from "react-router-dom";
 import About from "./About";
 import Featured from "./Featured";
 import Dashboard from "./Dashboard";
 import ExpEdu from "./ExpEdu";
 import Activity from "./Activity";
-import { withRouter, Link } from "react-router-dom";
 import LanguageOutlinedIcon from "@material-ui/icons/LanguageOutlined";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
+import Capitalize from "./Capitalize";
 
 export default class MainBody1 extends Component {
   state = {
@@ -69,11 +68,13 @@ export default class MainBody1 extends Component {
                   </div>
                 </div>
                 <div className="d-flex justify-content-between">
-                  <h2>
-                    {this.state.profileData.name}
-                    {this.state.profileData.surname}
-                  </h2>
-                  <div className="d-flex justify-content-between align-items-center">
+                  <div className="col-sm-8">
+                    <h2>
+                      {Capitalize(this.state.profileData.name)}{" "}
+                      {Capitalize(this.state.profileData.surname)}
+                    </h2>
+                  </div>
+                  <div className="col-sm-4 d-flex justify-content-center align-items-center">
                     <div>
                       <LanguageOutlinedIcon />
                     </div>

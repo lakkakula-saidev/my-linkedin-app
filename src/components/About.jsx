@@ -6,7 +6,7 @@ export default class About extends Component {
     return (
       <div className="aboutCard">
         <div className="d-flex justify-content-between">
-          <h3>About</h3>
+          <h2 className="sectionTitle">About</h2>
           <EditOutlinedIcon />
         </div>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias
