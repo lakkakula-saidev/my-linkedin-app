@@ -147,6 +147,9 @@ class ExpForm extends Component {
                 }
                 required
               />
+              {!this.state.experience.role && (
+                <p className="invalid mt-3">Please enter your title.</p>
+              )}
             </div>
             <div className="mt-4">
               <label htmlFor="EmploymentType">Employment type</label>
@@ -190,6 +193,11 @@ class ExpForm extends Component {
                 }
                 required
               />
+              {!this.state.experience.company && (
+                <p className="invalid mt-3">
+                  Please enter the name of your company.
+                </p>
+              )}
             </div>
             <div className="mt-3 mb-3">
               <label htmlFor="Company">Location</label>
@@ -210,6 +218,9 @@ class ExpForm extends Component {
                 }
                 required
               />
+              {!this.state.experience.area && (
+                <p className="invalid mt-3">Please enter your location.</p>
+              )}
             </div>
 
             {!this.state.checked && (
@@ -322,6 +333,9 @@ class ExpForm extends Component {
                   })
                 }
               />
+              {!this.state.experience.description && (
+                <p className="invalid mt-3">Please enter a description.</p>
+              )}
               <p className="mt-3" style={{ fontSize: "0.8rem" }}>
                 Media{" "}
               </p>
