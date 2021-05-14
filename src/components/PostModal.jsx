@@ -6,6 +6,7 @@ import {
   Dropdown,
   DropdownButton,
   Spinner,
+  Form,
 } from "react-bootstrap";
 import CloseIcon from "@material-ui/icons/Close";
 import PhotoSizeSelectActualOutlinedIcon from "@material-ui/icons/PhotoSizeSelectActualOutlined";
@@ -29,8 +30,19 @@ class PostModal extends Component {
     plusIcon: true,
     putCursor: () =>
       document.getElementById("exampleFormControlTextarea1").focus(),
+    image: "",
   };
 
+  imageInput = () => {
+    let input = document.getElementById("fileInput");
+    input.click();
+  };
+
+  imageToState = () => {
+    let input = document.getElementById("fileInput");
+    this.setState({ image: input.files[0] });
+    console.log(this.state.image);
+  };
   submitPost = async () => {
     try {
       this.setState({ isLoading: true });
@@ -48,12 +60,44 @@ class PostModal extends Component {
       );
 
       if (response.ok) {
-        alert("Your Post has been saved!!");
         this.setState({ post: { text: "" } });
-        this.setState({ isLoading: false });
+        //  here it checks if there is an image , if image = true then it posts it
+        if (this.state.image) {
+          let data = await response.json();
+          let id = data["_id"];
+
+          var formdata = new FormData();
+          formdata.append("post", this.state.image);
+          try {
+            let res = await fetch(
+              "https://striveschool-api.herokuapp.com/api/posts/" + id,
+              {
+                method: "POST",
+                headers: {
+                  Authorization:
+                    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZTllNDYxOWU1ZDAwMTUxZjhmNzkiLCJpYXQiOjE2MjA2MzQwODUsImV4cCI6MTYyMTg0MzY4NX0.LVFiiWvC5hj_tkyYlnYiUZd9DafCRH7foRwmjGXSjPM",
+                },
+                body: formdata,
+              }
+            );
+
+            if (res.ok) {
+              this.setState({ isLoading: false });
+              alert("Your Post has been saved!!");
+            } else {
+              this.setState({ isLoading: false });
+              alert("There is an error ", res.status);
+            }
+          } catch (error) {
+            alert("error");
+          }
+        } else {
+          this.setState({ isLoading: false });
+          alert("Your Post has been saved!!");
+        }
       } else {
-        alert("Something happened :/", response.status);
         this.setState({ isLoading: false });
+        alert("Something happened :/", response.status);
       }
     } catch (error) {
       alert(error);
@@ -157,7 +201,17 @@ class PostModal extends Component {
             </span>
           </Modal.Body>
           {this.state.isLoading && (
-            <Spinner animation="border" variant="primary" />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-evenly",
+              }}
+            >
+              <Spinner animation="border" variant="primary" />
+              <Spinner animation="border" variant="primary" />
+              <Spinner animation="border" variant="primary" />
+            </div>
           )}
           <div
             style={{
@@ -184,7 +238,12 @@ class PostModal extends Component {
               />
             </div>
             <PhotoSizeSelectActualOutlinedIcon
-              style={{ color: "rgb(102,102,102)", marginLeft: "1rem" }}
+              style={{
+                color: "rgb(102,102,102)",
+                marginLeft: "1rem",
+                cursor: "pointer",
+              }}
+              onClick={this.imageInput}
             />
             <PlayArrowOutlinedIcon
               style={{
@@ -214,15 +273,25 @@ class PostModal extends Component {
             <span className="d-none d-sm-inline-block">Anyone</span>
             <button
               className={
-                this.state.post.text ? this.state.postCss1 : this.state.postCss2
+                this.state.post.text && !this.state.isLoading
+                  ? this.state.postCss1
+                  : this.state.postCss2
               }
               style={{ marginLeft: "auto" }}
               onClick={this.submitPost}
-              disabled={this.state.post.text ? false : true}
+              disabled={
+                !this.state.post.text || this.state.isLoading ? true : false
+              }
             >
               Post
             </button>
           </div>
+          <input
+            style={{ visibility: "hidden" }}
+            id="fileInput"
+            type={"file"}
+            onChange={this.imageToState}
+          ></input>
           {this.state.plusIcon && (
             <Modal.Footer style={{ backgroundColor: "rgb(243,242,239)" }}>
               <div
@@ -270,8 +339,6 @@ class PostModal extends Component {
               </div>
             </Modal.Footer>
           )}
-
-          {console.log(this.state.post.text)}
         </Modal>
       </>
     );

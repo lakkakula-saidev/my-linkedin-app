@@ -48,7 +48,7 @@
   color: #0df4a4;
   cursor: pointer;
 }
-.refresh:active {
+.refresh:focus {
   animation-name: turn;
   animation-duration: 1s;
   animation-iteration-count: 1;
