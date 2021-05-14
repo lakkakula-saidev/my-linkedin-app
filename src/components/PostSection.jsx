@@ -17,18 +17,18 @@ import LanguageIcon from "@material-ui/icons/Language";
 import { BiWorld, BiDotsHorizontalRounded } from "react-icons/bi";
 import React from "react";
 import { format, parseISO } from "date-fns";
+import PostModal2 from "./PostModal2";
+import { post } from "jquery";
 
 class PostSection extends Component {
   state = {
     reservations: [], // initial state as an empty array, so can immediately map it out in the render
     isLoading: false,
     isError: false,
+    toUpdate: true,
   };
 
-  componentDidMount = async () => {
-    console.log("you should see this console.log just once every reload");
-
-    // let's fetch our data!
+  async updatePOST() {
     try {
       this.setState({
         isLoading: true,
@@ -56,9 +56,18 @@ class PostSection extends Component {
       console.log(error);
       this.setState({ isError: true, isLoading: false });
     }
+  }
+  componentDidMount = async () => {
+    await this.updatePOST();
+    // let's fetch our data!
   };
 
-  componentDidUpdate = async () => {};
+  componentDidUpdate = async () => {
+    if (!this.state.toUpdate) {
+      this.updatePOST();
+      this.setState({ toUpdate: true });
+    }
+  };
 
   render() {
     let cts = {};
@@ -73,7 +82,7 @@ class PostSection extends Component {
             )
             .reverse()
             .map((post) => (
-              <Card className="padder" key={post.id}>
+              <Card className="padder" key={post._id}>
                 <Card.Body>
                   <Card.Text>
                     <div className="sizer">
@@ -96,15 +105,82 @@ class PostSection extends Component {
                           {post.createdAt.split("T")[0]} • <BiWorld />{" "}
                         </p>
                       </div>
-                      {/*  <div className="left-elementA">
-                        <h2>
-                          <BiDotsHorizontalRounded />
-                        </h2>
-                      </div> */}
+
                       <div className="foo">
-                        <h2>
-                          <BiDotsHorizontalRounded />
-                        </h2>
+                        <Dropdown>
+                          <Dropdown.Toggle id="dropdown-basic">
+                            <h1>
+                              <BiDotsHorizontalRounded />
+                            </h1>
+                          </Dropdown.Toggle>
+
+                          <Dropdown.Menu>
+                            <Dropdown.Item href="#/action-1">
+                              <p className="boldness fonty">Save</p>
+                            </Dropdown.Item>
+                            <Dropdown.Item href="#/action-2">
+                              <p className="boldness fonty">
+                                Copy link to post
+                              </p>
+                            </Dropdown.Item>
+                            <Dropdown.Item href="#/action-3">
+                              <p className="boldness fonty">Embed this post</p>
+                            </Dropdown.Item>
+                            <Dropdown.Item href="#/action-3">
+                              <p className="boldness fonty">
+                                Unfollow {post.user.name} {post.user.surname}
+                              </p>
+                            </Dropdown.Item>
+                            <Dropdown.Item href="#/action-3">
+                              <p className="boldness fonty">
+                                {" "}
+                                I don't want to see this post {
+                                  post.user.name
+                                }{" "}
+                                {post.user.surname}
+                              </p>
+                            </Dropdown.Item>
+                            <Dropdown.Item href="#/action-3">
+                              <p className="boldness fonty">
+                                {" "}
+                                Report this post
+                              </p>
+                            </Dropdown.Item>
+                            <Dropdown.Item href="#/action-3">
+                              <p className="boldness fonty">
+                                {" "}
+                                Who can see this post
+                              </p>
+                            </Dropdown.Item>
+                            {post.user._id === "6098e9e4619e5d00151f8f79" && (
+                              <Dropdown.Item
+                                onClick={() =>
+                                  this.setState({ clicked: post._id })
+                                }
+                                href="#/action-3"
+                              >
+                                <p
+                                  className="boldness fonty"
+                                  style={{ color: "red" }}
+                                >
+                                  {" "}
+                                  Edit
+                                </p>
+                              </Dropdown.Item>
+                            )}
+                            {post.user._id === "6098e9e4619e5d00151f8f79" && (
+                              <Dropdown.Item href="#/action-3">
+                                <p
+                                  className="boldness fonty"
+                                  style={{ color: "red" }}
+                                >
+                                  {" "}
+                                  Delete
+                                </p>
+                              </Dropdown.Item>
+                            )}
+                          </Dropdown.Menu>
+                        </Dropdown>
                       </div>
                     </div>
 
@@ -114,6 +190,15 @@ class PostSection extends Component {
               </Card>
             ))}
         </div>
+
+        <PostModal2
+          show={Boolean(this.state.clicked)}
+          hide={() => this.setState({ clicked: null, toUpdate: false })}
+          img={this.state.imgUrl}
+          name={this.state.name}
+          surname={this.state.surname}
+          id={this.state.clicked}
+        />
       </>
     );
   }
