@@ -1,5 +1,6 @@
 import { Component } from "react";
 import "../Post.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import PhotoSizeSelectActualOutlinedIcon from "@material-ui/icons/PhotoSizeSelectActualOutlined";
 import PlayArrowOutlinedIcon from "@material-ui/icons/PlayArrowOutlined";
 import EventNoteRoundedIcon from "@material-ui/icons/EventNoteRounded";
@@ -50,7 +51,13 @@ class Post extends Component {
           >
             <img className="postImg" src={this.state.imgUrl} />
             <button
-              className="postBtn"
+              className="postBtn d-none d-md-block"
+              onClick={() => this.setState({ clicked: true })}
+            >
+              Start a post
+            </button>
+            <button
+              className="postBtn1 d-block d-md-none"
               onClick={() => this.setState({ clicked: true })}
             >
               Start a post
@@ -97,7 +104,8 @@ class Post extends Component {
               {
                 <AssignmentRoundedIcon style={{ color: "rgb(245,152,126)" }} />
               }{" "}
-              Write article{" "}
+              <span className="d-none d-lg-inline-block mr-1">Write </span>{" "}
+              article
             </span>
           </div>
         </div>

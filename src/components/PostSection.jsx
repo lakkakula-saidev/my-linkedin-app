@@ -15,7 +15,7 @@ import "../styleLeo.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import HelpIcon from "@material-ui/icons/Help";
 import LanguageIcon from "@material-ui/icons/Language";
-import {BiWorld, BiDotsHorizontalRounded} from "react-icons/bi"
+import { BiWorld, BiDotsHorizontalRounded } from "react-icons/bi";
 import React from "react";
 
 class PostSection extends Component {
@@ -59,40 +59,51 @@ class PostSection extends Component {
   };
 
   render() {
-    let cts = {}
-    let cdate = (new Date(cts)).toString();
+    let cts = {};
+    let cdate = new Date(cts).toString();
     return (
       <>
 
         <Container>
 
           {this.state.reservations.slice(0, 8).map((post) => (
-            <Card className="padder"key={post.id}>
+            <Card className="padder" key={post.id}>
               <Card.Body>
                 <Card.Text>
-               
                   <div className="sizer">
                     {" "}
-                   <div>
-                       <img src={post.user.image} alt="" className="figure-img" />
-                   </div>
-                    <div className="mar"><span> </span>
-                    <h6 className="boldness">{post.user.name}</h6>
-                    <span> </span>
-                    <h6 className="boldness">{post.user.surname}</h6>
-                    <span> </span>
-                    <h6 className="grey">• Following</h6> 
-                    <div className="grey">{post.user.title}</div>
-                    <p className="grey">{post.createdAt} • <BiWorld/> </p> 
+                    <div>
+                      <img
+                        src={post.user.image}
+                        alt=""
+                        className="figure-img"
+                      />
                     </div>
+                    <div className="mar">
+                      <span> </span>
+                      <h6 className="boldness">{post.user.name}</h6>
+                      <span> </span>
+                      <h6 className="boldness">{post.user.surname}</h6>
+                      <span> </span>
+                      <h6 className="grey">• Following</h6>
+                      <div className="grey">{post.user.title}</div>
+                      <p className="grey">
+                        {post.createdAt} • <BiWorld />{" "}
+                      </p>
+                    </div>
+                    <div className="left-elementA">
+                      <h2>
+                        <BiDotsHorizontalRounded />
+                      </h2>
+                    </div>
+
                     <div className="foo"><h2><BiDotsHorizontalRounded/></h2></div>
                    
                   </div>
-                 
+
                   <p className="postP mar2"> {post.text}</p>
                 </Card.Text>
               </Card.Body>
-
             </Card>
           ))}
         </Container>
