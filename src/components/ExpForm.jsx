@@ -10,6 +10,8 @@ import POST_API from "./POST_API";
 import DELETE_API from "./DELETE_API";
 import PUT_API from "./PUT_API";
 import ValidateModal from "./ValidateModal";
+import ImageHandle from "./ImageHandle";
+import FormDataPost from "./FormDataPost";
 
 class ExpForm extends Component {
   state = {
@@ -22,7 +24,7 @@ class ExpForm extends Component {
       endDate: "",
       description: "",
     },
-    isClass: false,
+    image: null,
     postCss1: "postbtn1 ",
     postCss2: "postbtn2 ",
   };
@@ -30,12 +32,30 @@ class ExpForm extends Component {
   async addExp() {
     const isEmpty = await ValidateModal(this.state.experience);
     if (isEmpty !== true) {
-      await POST_API(
-        this.state.experience,
-        this.props.user_id,
-        "profile",
-        "experiences"
-      );
+      try {
+        let fetchResult = await POST_API(
+          /* this.state.experience */
+          this.state.experience,
+          this.props.user_id,
+          "profile",
+          "experiences"
+        );
+        if (this.state.image !== null) {
+          let formData = new FormData();
+          formData.append("experience", this.state.image);
+          let exp_id = fetchResult._id;
+
+          FormDataPost(
+            formData,
+            this.props.user_id,
+            exp_id,
+            "profile",
+            "experiences"
+          );
+        }
+      } catch (error) {
+        alert("Filed upload failed");
+      }
       await this.props.closeForm(false);
     } else {
       alert(
@@ -317,6 +337,22 @@ class ExpForm extends Component {
                 )}
               </div>
             </div>
+
+            <div className="form-group mb-3">
+              <label for="myfile">Picture: </label>
+              <input
+                type="file"
+                id="myfile"
+                name="myfile"
+                files={this.state.image}
+                onChange={(e) =>
+                  this.setState({
+                    image: ImageHandle(e),
+                  })
+                }
+              />
+            </div>
+
             <div className="form-group mb-3">
               <label htmlFor="exampleFormControlTextarea1">Description</label>
               <textarea
@@ -336,18 +372,18 @@ class ExpForm extends Component {
               {!this.state.experience.description && (
                 <p className="invalid mt-3">Please enter a description.</p>
               )}
-              <p className="mt-3" style={{ fontSize: "0.8rem" }}>
+              {/*  <p className="mt-3" style={{ fontSize: "0.8rem" }}>
                 Media{" "}
               </p>
               <p style={{ fontSize: "0.8rem" }}>
                 Add or link to external documents, photos, sites, videos and
                 presentations.{" "}
-              </p>
+              </p> */}
             </div>
-            <div className="d-flex " style={{ justifyContent: "space-around" }}>
+            {/*  <div className="d-flex " style={{ justifyContent: "space-around" }}>
               <button className="btnB">Upload</button>
               <button className="btnW">Link</button>
-            </div>
+            </div> */}
             <HelpOutlineIcon
               style={{
                 color: "blue",

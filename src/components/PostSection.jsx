@@ -1,31 +1,17 @@
 import { Component } from "react";
-import {
-  Col,
-  Row,
-  Container,
-  Card,
-  Button,
-  Table,
-  Figure,
-  Dropdown,
-} from "react-bootstrap";
-import pic from "../leoAssets/ciao.jpg";
+import { Card, Dropdown } from "react-bootstrap";
 import "../styleLeo.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import HelpIcon from "@material-ui/icons/Help";
-import LanguageIcon from "@material-ui/icons/Language";
 import { BiWorld, BiDotsHorizontalRounded } from "react-icons/bi";
 import React from "react";
-import { format, parseISO } from "date-fns";
 import PostModal2 from "./PostModal2";
-import { post } from "jquery";
 
 class PostSection extends Component {
   state = {
     reservations: [], // initial state as an empty array, so can immediately map it out in the render
     isLoading: false,
     isError: false,
-    toUpdate: true,
+    toUpdate: "",
   };
 
   async updatePOST() {
@@ -183,7 +169,13 @@ class PostSection extends Component {
                         </Dropdown>
                       </div>
                     </div>
-
+                    {post.image ? (
+                      <div>
+                        <img src={post.image} className="img-fluid" alt="" />
+                      </div>
+                    ) : (
+                      <></>
+                    )}
                     <p className="postP mar2"> {post.text}</p>
                   </Card.Text>
                 </Card.Body>
