@@ -108,7 +108,7 @@ class ExpForm extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log(this.state.experience);
+    /* console.log(this.state.experience); */
     if (
       Object.keys(prevProps.editExperience).length !== 0 &&
       Object.keys(this.props.editExperience).length === 0
@@ -120,9 +120,9 @@ class ExpForm extends Component {
   }
 
   render() {
-    {
+    /* {
       console.log(this.state.experience);
-    }
+    } */
     return (
       <>
         <Modal
