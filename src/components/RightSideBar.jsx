@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Col, Container, Card, Button, Figure } from "react-bootstrap";
+import { Col, Card, Button, Figure } from "react-bootstrap";
 import pic from "../leoAssets/ciao.jpg";
 import "../styleLeo.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -33,10 +33,8 @@ class RightSideBar extends Component {
           },
         }
       );
-      console.log(response);
       if (response.ok) {
         let data = await response.json();
-        console.log(data);
         this.setState({ reservations: data, isError: false, isLoading: false });
       } else {
         console.log("houston we got an error");
@@ -57,7 +55,6 @@ class RightSideBar extends Component {
     // I cannot put the fetch here
     // and I cannot set the state here either
     // this.setState({ reservations: ['stefano'] })
-
     return (
       <>
         <div>
@@ -80,8 +77,8 @@ class RightSideBar extends Component {
             </Col>
           </div>
 
-          <Col style={{ backgroundColor: "white" }} className="upperP  backG">
-            <Card className=" imageProfile" style={{ width: "14rem" }}>
+          <Col style={{ backgroundColor: "white" }} className="mb-4">
+            <Card className=" imageProfile" style={{ width: "100% " }}>
               <Card.Img variant="top" src={pic} />
             </Card>
           </Col>
@@ -93,15 +90,28 @@ class RightSideBar extends Component {
                 className="d-flex sizer justify-content-start"
                 key={user._id}
               >
-                <Figure.Image alt="171x180" src={user.image} />
+                <Figure.Image
+                  className="changeProfile"
+                  alt="171x180"
+                  src={user.image}
+                  onClick={() => this.props.changeProfile(user)}
+                />
 
                 <div className="justify-content-start">
                   {" "}
                   <Figure.Caption className="right borderR ">
-                    <p className="boldness">
-                      {user.name} {user.username} 3°+
+                    <p
+                      className="boldness changeProfile"
+                      onClick={() => this.props.changeProfile(user)}
+                    >
+                      {user.name} {user.username}
                     </p>
-                    <p className="titlePara">{user.title}</p>
+                    <p
+                      className="titlePara changeProfile"
+                      onClick={() => this.props.changeProfile(user)}
+                    >
+                      {user.title}
+                    </p>
                     <Button className="borderR" variant="outline-secondary">
                       Connect
                     </Button>{" "}

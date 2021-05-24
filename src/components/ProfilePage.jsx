@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import { Jumbotron, Col, Image, Row } from "react-bootstrap";
-import { DropdownButton, Dropdown, Spinner, Button } from "react-bootstrap";
+import {
+  DropdownButton,
+  Dropdown,
+  Spinner,
+  Button,
+  Modal,
+} from "react-bootstrap";
 import About from "./About";
 import Featured from "./Featured";
 import Dashboard from "./Dashboard";
@@ -9,14 +15,18 @@ import Activity from "./Activity";
 import LanguageOutlinedIcon from "@material-ui/icons/LanguageOutlined";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import Capitalize from "./Capitalize";
+import ImageHandle from "./ImageHandle";
+import { TimerSharp } from "@material-ui/icons";
 
 export default class MainBody1 extends Component {
   state = {
     profileData: {},
     isloading: false,
+    showModal: false,
+    image: null,
   };
 
-  async componentDidMount() {
+  async fetchProfile() {
     const endpoint = "https://striveschool-api.herokuapp.com/api/profile/me";
 
     try {
@@ -39,6 +49,52 @@ export default class MainBody1 extends Component {
     }
   }
 
+  async componentDidMount() {
+    await this.fetchProfile();
+  }
+
+  handleClose() {
+    this.setState({ showModal: false });
+  }
+
+  async submitPicture() {
+    this.setState({ showModal: false });
+    if (this.state.image !== null) {
+      this.setState({ showModal: false });
+      let formData = new FormData();
+      formData.append("profile", this.state.image);
+
+      const endpoint =
+        "https://striveschool-api.herokuapp.com/api/profile/me/picture";
+
+      try {
+        let response = await fetch(endpoint, {
+          method: "POST",
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZTllNDYxOWU1ZDAwMTUxZjhmNzkiLCJpYXQiOjE2MjA2MzQwODUsImV4cCI6MTYyMTg0MzY4NX0.LVFiiWvC5hj_tkyYlnYiUZd9DafCRH7foRwmjGXSjPM",
+          },
+          body: formData,
+        });
+        if (response.ok) {
+          response = await response.json();
+          this.setState({
+            profileData: response,
+          });
+          this.setState({ isLoading: !this.state.isloading, image: null });
+        }
+      } catch (error) {
+      } finally {
+        console.log(this.state.profileData /* this.state.profileData._id */);
+      }
+    }
+  }
+
+  async componentDidUpdate() {
+    /*   if (this.state.image !== null) {
+      await this.fetchProfile();
+    } */
+  }
   render() {
     return (
       <div className="px-0 mainBody1">
@@ -57,10 +113,17 @@ export default class MainBody1 extends Component {
                 <div className="d-flex justify-content-between profileIconRow">
                   <div className="profileIcon">
                     <Button variant="outline-primary profileButton">
-                      <img
-                        src="https://source.unsplash.com/random"
-                        class="roundedImg "
-                      />
+                      {this.state.profileData.image ? (
+                        <img
+                          src={this.state.profileData.image}
+                          class="roundedImg "
+                        />
+                      ) : (
+                        <img
+                          src="https://source.unsplash.com/random"
+                          class="roundedImg "
+                        />
+                      )}
                     </Button>
                   </div>
                   <div className="align-self-center">
@@ -147,7 +210,7 @@ export default class MainBody1 extends Component {
                       </li>
                       <li>
                         <div>
-                          <DropdownButton id="profileButtons" title="More..">
+                          {/* <DropdownButton id="profileButtons" title="More..">
                             <Dropdown.Item href="#/action-1">
                               Action
                             </Dropdown.Item>
@@ -157,7 +220,16 @@ export default class MainBody1 extends Component {
                             <Dropdown.Item href="#/action-3">
                               Something else
                             </Dropdown.Item>
-                          </DropdownButton>
+                          </DropdownButton> */}
+                          {/* <Button>Profile Pic</Button> */}
+
+                          <Button
+                            variant="primary"
+                            id="profileButtons"
+                            onClick={() => this.setState({ showModal: true })}
+                          >
+                            Profile Pic
+                          </Button>
                         </div>
                       </li>
                     </ul>{" "}
@@ -172,6 +244,38 @@ export default class MainBody1 extends Component {
             <Activity />
             <Dashboard />
             <ExpEdu user_id={this.state.profileData._id} />
+            <Modal
+              show={this.state.showModal}
+              onHide={() => this.handleClose()}
+            >
+              <Modal.Header closeButton>
+                <Modal.Title>Change Profile Pic</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <div className="form-group mb-3">
+                  <label for="myfile">Picture: </label>
+                  <input
+                    type="file"
+                    id="myfile"
+                    name="myfile"
+                    files={this.state.image}
+                    onChange={(e) =>
+                      this.setState({
+                        image: ImageHandle(e),
+                      })
+                    }
+                  />
+                </div>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={() => this.handleClose()}>
+                  Close
+                </Button>
+                <Button variant="success" onClick={() => this.submitPicture()}>
+                  Save Changes
+                </Button>
+              </Modal.Footer>
+            </Modal>
           </>
         )}
       </div>

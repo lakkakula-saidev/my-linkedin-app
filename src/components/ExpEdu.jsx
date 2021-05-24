@@ -24,6 +24,7 @@ class ExperienceEducation extends React.Component {
       startDate: "",
       endDate: "",
       description: "",
+      /* image: null, */
     },
   };
 
@@ -76,10 +77,26 @@ class ExperienceEducation extends React.Component {
           {this.state.Experience.map((item, id) => (
             <div className="d-flex mb-3 justify-content-flex-start divExp">
               <div>
-                <img
-                  src="https://www.vouchercodes.co.uk/static/v10/images/merchant/logo/128px/825_180920143441.png"
-                  style={{ width: "75px", height: "75px", marginRight: "20px" }}
-                ></img>
+                {item.image ? (
+                  <img
+                    src={item.image}
+                    className="img-fluid"
+                    style={{
+                      maxWidth: "75px",
+
+                      marginRight: "20px",
+                    }}
+                  ></img>
+                ) : (
+                  <img
+                    src="https://www.vouchercodes.co.uk/static/v10/images/merchant/logo/128px/825_180920143441.png"
+                    style={{
+                      width: "75px",
+                      height: "75px",
+                      marginRight: "20px",
+                    }}
+                  ></img>
+                )}
               </div>
 
               <div className="d-flex flex-column w-100">

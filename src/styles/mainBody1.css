@@ -230,3 +230,11 @@ h4 {
   cursor: not-allowed !important;
   border-radius: 5px;
 }
+
+.changeProfile:hover {
+  cursor: pointer;
+}
+
+p.changeProfile:hover {
+  text-decoration: underline;
+}
