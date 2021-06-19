@@ -20,7 +20,6 @@ import MessageIcon from "@material-ui/icons/Message";
 
 class PostModal2 extends Component {
   state = {
-   
     post: {
       text: "ciao",
     },
@@ -42,7 +41,7 @@ class PostModal2 extends Component {
           body: JSON.stringify(this.state.post),
           headers: {
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZTllNDYxOWU1ZDAwMTUxZjhmNzkiLCJpYXQiOjE2MjA2MzQwODUsImV4cCI6MTYyMTg0MzY4NX0.LVFiiWvC5hj_tkyYlnYiUZd9DafCRH7foRwmjGXSjPM",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDgwMWY1MWIxZjBmYjAwMTVkOTE3OTEiLCJpYXQiOjE2MjM2NTczNzksImV4cCI6MTYyNDg2Njk3OX0.Ca6eiVDE1TdO2u0OAs5NIlSfceE78PpbiBrStWjFMGE",
             "Content-Type": "application/json",
           },
         }
@@ -52,7 +51,7 @@ class PostModal2 extends Component {
         alert("Your Post has been saved!!");
         this.setState({ post: { text: "" } });
         this.setState({ isLoading: false });
-        this.props.hide()
+        this.props.hide();
       } else {
         alert("Something happened :/", response.status);
         this.setState({ isLoading: false });
@@ -63,12 +62,12 @@ class PostModal2 extends Component {
   };
 
   componentDidMount = () => {
-      this.fetchPost()
-  }
+    this.fetchPost();
+  };
 
   componentDidUpdate = (prevProps) => {
-    prevProps.id !== this.props.id && this.fetchPost()
-  }
+    prevProps.id !== this.props.id && this.fetchPost();
+  };
 
   fetchPost = async () => {
     console.log("you should see this console.log just once every reload");
@@ -88,13 +87,13 @@ class PostModal2 extends Component {
           },
         }
       );
-     
+
       if (response.ok) {
         let data = await response.json();
 
         console.log(data);
-        this.setState({post:{text:data.text}});
-        
+        this.setState({ post: { text: data.text } });
+
         // this.setState({ post: {text: reservations}});
       } else {
         console.log("houston we got an error");
@@ -107,16 +106,14 @@ class PostModal2 extends Component {
   };
 
   render() {
-   
     return (
       <>
         <Modal
           show={this.props.show}
-          id = {this.props.id}
+          id={this.props.id}
           onHide={this.props.hide}
           scrollable={true}
           style={{ height: "100vh" }}
-
         >
           <Modal.Header>
             <Modal.Title>Edit a Post</Modal.Title>
@@ -288,27 +285,21 @@ class PostModal2 extends Component {
                     flexDirection: "row",
                     justifyContent: "space-around",
                   }}
-                >
-                 
-                </div>
+                ></div>
                 <div
                   style={{
                     display: "flex",
                     flexDirection: "row",
                     justifyContent: "space-between",
                   }}
-                >
-                 
-                </div>
+                ></div>
                 <div
                   style={{
                     display: "flex",
                     flexDirection: "row",
                     justifyContent: "space-around",
                   }}
-                >
-                 
-                </div>
+                ></div>
               </div>
             </Modal.Footer>
           )}

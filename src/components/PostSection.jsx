@@ -43,7 +43,7 @@ class PostSection extends Component {
           },
         }
       );
-      console.log(response);
+
       if (response.ok) {
         let data = await response.json();
         console.log(data);
@@ -75,6 +75,7 @@ class PostSection extends Component {
     return (
       <>
         <div>
+          {console.log(this.state.reservations + "line 78")}
           {this.state.reservations
             .slice(
               this.state.reservations.length - 10,
@@ -106,84 +107,7 @@ class PostSection extends Component {
                         </p>
                       </div>
 
-                      <div className="foo">
-                        <Dropdown>
-                          <Dropdown.Toggle id="dropdown-basic">
-                            <h1>
-                              <BiDotsHorizontalRounded />
-                            </h1>
-                          </Dropdown.Toggle>
-
-                          <Dropdown.Menu>
-                            <Dropdown.Item href="#/action-1">
-                              <p className="boldness fonty">Save</p>
-                            </Dropdown.Item>
-                            <Dropdown.Item href="#/action-2">
-                              <p className="boldness fonty">
-                                Copy link to post
-                              </p>
-                            </Dropdown.Item>
-                            <Dropdown.Item href="#/action-3">
-                              <p className="boldness fonty">Embed this post</p>
-                            </Dropdown.Item>
-                            <Dropdown.Item href="#/action-3">
-                              <p className="boldness fonty">
-                                Unfollow {post.user.name} {post.user.surname}
-                              </p>
-                            </Dropdown.Item>
-                            <Dropdown.Item href="#/action-3">
-                              <p className="boldness fonty">
-                                {" "}
-                                I don't want to see this post {
-                                  post.user.name
-                                }{" "}
-                                {post.user.surname}
-                              </p>
-                            </Dropdown.Item>
-                            <Dropdown.Item href="#/action-3">
-                              <p className="boldness fonty">
-                                {" "}
-                                Report this post
-                              </p>
-                            </Dropdown.Item>
-                            <Dropdown.Item href="#/action-3">
-                              <p className="boldness fonty">
-                                {" "}
-                                Who can see this post
-                              </p>
-                            </Dropdown.Item>
-                            {post.user._id === "6098e9e4619e5d00151f8f79" && (
-                              <Dropdown.Item
-                                onClick={() =>
-                                  this.setState({ clicked: post._id })
-                                }
-                                href="#/action-3"
-                              >
-                                <p
-                                  className="boldness fonty"
-                                  style={{ color: "red" }}
-                                >
-                                  {" "}
-                                  Edit
-                                </p>
-                              </Dropdown.Item>
-                            )}
-                            {post.user._id === "6098e9e4619e5d00151f8f79" && (
-                              <Dropdown.Item href="#/action-3">
-                                <p
-                                  className="boldness fonty"
-                                  style={{ color: "red" }}
-                                >
-                                  {" "}
-                                  Delete
-                                </p>
-                              </Dropdown.Item>
-                            )}
-                          </Dropdown.Menu>
-                        </Dropdown>
-                      </div>
-                    </div>
-
+                
                     <p className="postP mar2"> {post.text}</p>
                   </Card.Text>
                 </Card.Body>

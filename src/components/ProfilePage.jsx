@@ -23,13 +23,14 @@ export default class MainBody1 extends Component {
       let response = await fetch(endpoint, {
         headers: {
           Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZTllNDYxOWU1ZDAwMTUxZjhmNzkiLCJpYXQiOjE2MjA2MzQwODUsImV4cCI6MTYyMTg0MzY4NX0.LVFiiWvC5hj_tkyYlnYiUZd9DafCRH7foRwmjGXSjPM",
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDgwMWY1MWIxZjBmYjAwMTVkOTE3OTEiLCJpYXQiOjE2MjM2NTczNzksImV4cCI6MTYyNDg2Njk3OX0.Ca6eiVDE1TdO2u0OAs5NIlSfceE78PpbiBrStWjFMGE",
         },
       });
       if (response.ok) {
-        response = await response.json();
+        let data = await response.json();
+        console.log(data + "this is the log");
         this.setState({
-          profileData: response,
+          profileData: data,
         });
         this.setState({ isLoading: !this.state.isloading });
       }
@@ -70,8 +71,9 @@ export default class MainBody1 extends Component {
                 <div className="d-flex justify-content-between">
                   <div className="col-sm-8">
                     <h2>
-                      {Capitalize(this.state.profileData.name)}{" "}
-                      {Capitalize(this.state.profileData.surname)}
+                      {/* {Capitalize(this.state.profileData.name)}{" "}
+                      {Capitalize(this.state.profileData.surname)} */}
+                      Kostas Makaronas
                     </h2>
                   </div>
                   <div className="col-sm-4 d-flex justify-content-center align-items-center">
@@ -167,6 +169,7 @@ export default class MainBody1 extends Component {
                 <Col className="jumboRow-col2 "></Col>
               </Row>
             </Jumbotron>
+
             <About />
             <Featured />
             <Activity />

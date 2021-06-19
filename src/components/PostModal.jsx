@@ -11,7 +11,6 @@ import {
 import CloseIcon from "@material-ui/icons/Close";
 import PhotoSizeSelectActualOutlinedIcon from "@material-ui/icons/PhotoSizeSelectActualOutlined";
 import PlayArrowOutlinedIcon from "@material-ui/icons/PlayArrowOutlined";
-import AssignmentRoundedIcon from "@material-ui/icons/AssignmentRounded";
 import "bootstrap/dist/css/bootstrap.min.css";
 import LanguageRoundedIcon from "@material-ui/icons/LanguageRounded";
 import RefreshRoundedIcon from "@material-ui/icons/RefreshRounded";
